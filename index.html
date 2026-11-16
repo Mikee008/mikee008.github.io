@@ -317,6 +317,14 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
 .hat.match{border-color:var(--ink);background:var(--soft)}
 @media (max-width:1000px){.hats{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:640px){.hats{grid-template-columns:repeat(2,minmax(0,1fr))}.hat{min-height:150px;padding:14px}.hat .ha{opacity:1;transform:none}}
+.case .graph{max-width:560px;margin:16px 0}
+.skill.more{display:none}
+.skills.all .skill.more{display:block}
+.showtools{margin-top:24px}
+.g-scroll{height:400px}
+.g-scroll:hover img{transform:translateY(calc(-100% + 400px))}
+.g-videos video{height:300px}
+.explainer{max-width:880px}
 /* transitions */
 .curtain{position:fixed;inset:0;z-index:70;pointer-events:none;background:var(--ink);transform:translateY(100%);display:flex;align-items:center;justify-content:center}
 .curtain span{color:var(--bg);font:500 clamp(28px,5vw,56px)/1 Geist,sans-serif;letter-spacing:-.03em;opacity:0;transform:translateY(20px);transition:opacity .3s .1s,transform .45s .1s cubic-bezier(.2,.8,.2,1)}
@@ -461,6 +469,17 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
 }
 @media (prefers-reduced-motion:reduce){.bot,.msg,.botteaser{transition:none;animation:none}}
 @media print{.botfab,.bot,.botteaser{display:none!important}}
+
+.swipe-hint{display:none;font-size:12.5px;color:var(--muted);margin:-4px 0 10px}
+@media (max-width:640px){
+  .hats,.gallery{scroll-padding-left:20px;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:0 -20px;padding:4px 20px 14px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .hats::-webkit-scrollbar,.gallery::-webkit-scrollbar{display:none}
+  .hat{flex:0 0 72%;scroll-snap-align:start;min-height:170px}
+  .g-card,.gallery .g-card:nth-of-type(5),.g-wide{flex:0 0 86%;scroll-snap-align:start;grid-column:auto}
+  .g-scroll{height:340px}.g-scroll:hover img{transform:translateY(calc(-100% + 340px))}
+  .g-collage{flex-wrap:nowrap}
+  .swipe-hint{display:block}
+}
 </style>
 </head>
 <body>
@@ -468,7 +487,7 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
 <nav aria-label="Main"><div class="wrap">
   <a class="brand" href="#top"><span class="logo" aria-hidden="true">m</span>Mikee Gooden</a>
   <div class="right">
-    <div class="links"><a href="#work">Work</a><a href="#approach">Approach</a><a href="#experience">Experience</a><a href="#contact">Contact</a></div>
+    <div class="links"><a href="#work">Work</a><a href="#marketing">Marketing</a><a href="#experience">Experience</a><a href="#contact">Contact</a></div>
     <a class="nav-cv" href="cv/Michael-Angelo-Gooden-CV.pdf" download data-cv>Download CV</a>
     <button class="iconbtn" id="palbtn" type="button" aria-label="Open command menu"><span aria-hidden="true">⌘</span><span class="lbl">K</span></button>
     <button class="iconbtn" id="theme" type="button" aria-label="Dark theme" aria-pressed="false"><span aria-hidden="true">◐</span></button>
@@ -481,7 +500,7 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
     <div>
       
       <h1><span class="line"><span>I used to reconcile the books.</span></span><span class="line"><span class="grad">Now I build the systems behind them.</span></span></h1>
-      <p class="lede" id="lede" aria-live="polite">I lead business intelligence and systems for a multi-branch luxury retailer in the Philippines and Hong Kong: I run discovery, write the requirements and build the tools myself by directing AI coding agents. Before that, three years at Shopee Philippines.</p>
+      <p class="lede" id="lede" aria-live="polite">I lead business intelligence and systems for Vintage Grail, a multi-branch luxury watch retailer in the Philippines and Hong Kong: I run discovery, write the requirements and build the tools myself by directing AI coding agents. Before that, three years at Shopee Philippines.</p>
       <p class="where">Michael Angelo (Mikee) Gooden · Based in Manila</p>
       <div class="picker">
         <p id="pick-l">Hiring for a specific role? The page reorders to match.</p>
@@ -519,74 +538,8 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
   <div class="bento">
     <div class="tile spot rv"><div class="big"><span class="count" data-to="10">10</span></div><div class="lbl">years across e-commerce, luxury retail, digital marketing and finance</div></div>
     <div class="tile spot rv"><div class="big grad"><span class="count" data-to="6">6</span></div><div class="lbl">business systems built in 2026 by directing AI coding agents</div></div>
-    <div class="tile spot rv"><div class="big"><span class="count" data-to="2">2</span></div><div class="lbl">countries, with teams in the Philippines and Hong Kong</div></div>
+    <div class="tile spot rv"><div class="big"><span class="count" data-to="3">3</span></div><div class="lbl">live websites built on my own, plus one awaiting launch</div></div>
     <div class="tile spot rv"><div class="big">~10<small style="font-size:18px"> wks</small></div><div class="lbl">from start of build to a live operations system</div></div>
-  </div>
-</div></section>
-
-<section id="hats"><div class="wrap">
-  <p class="kicker">Range</p>
-  <h2>One person, many hats.</h2>
-  <p class="sub">At a lean, multi-branch business I cover roles that usually sit in different teams. Each hat below links to the work that proves it.</p>
-  <div class="hats">
-      <a class="hat rv" href="#case-01" data-roles="systems product"><span class="hn">01</span><b>Business analyst</b><span class="hp">Discovery sessions, requirements, acceptance and pass/fail criteria, staff testing.</span><span class="ha">See it →</span></a>
-      <a class="hat rv" href="#case-02" data-roles="bi"><span class="hn">02</span><b>BI lead</b><span class="hp">KPIs defined with management; dashboards for gross profit, close rate and inventory ageing; a pricing data pipeline.</span><span class="ha">See it →</span></a>
-      <a class="hat rv" href="#case-04" data-roles="ai product systems"><span class="hn">03</span><b>Product owner &amp; builder</b><span class="hp">Six systems built in 2026 by directing AI coding agents, from spec to go-live.</span><span class="ha">See it →</span></a>
-      <a class="hat rv" href="#case-03" data-roles="product marketing"><span class="hn">04</span><b>Web developer</b><span class="hp">A catalogue, Grail Exchange and a Shopify store, all built on my own.</span><span class="ha">See it →</span></a>
-      <a class="hat rv" href="#marketing" data-roles="marketing"><span class="hn">05</span><b>Marketer</b><span class="hp">Shopee mega sales, paid search, SEO and Mailchimp email campaigns.</span><span class="ha">See it →</span></a>
-      <a class="hat rv" href="#marketing" data-roles="marketing"><span class="hn">06</span><b>Designer</b><span class="hp">Landing pages, brand guidelines, social posts and in-app banners.</span><span class="ha">See it →</span></a>
-      <a class="hat rv" href="#case-03" data-roles="marketing ai"><span class="hn">07</span><b>Video producer</b><span class="hp">The Grail Exchange explainer: AI voice-over, licensed stock and scripted editing.</span><span class="ha">See it →</span></a>
-      <a class="hat rv" href="#marketing" data-roles="marketing"><span class="hn">08</span><b>Photographer</b><span class="hp">In-house luxury watch photography, trained by professional watch photographers in Hong Kong.</span><span class="ha">See it →</span></a>
-      <a class="hat rv" href="#approach" data-roles="systems product"><span class="hn">09</span><b>Trainer</b><span class="hp">Onboarding guides at Shopee; staff testing, training and guides for system rollouts.</span><span class="ha">See it →</span></a>
-      <a class="hat rv" href="#experience" data-roles="bi systems"><span class="hn">10</span><b>Finance mind</b><span class="hp">Three years in accounting: reconciliations and month-end close, now built into finance exports.</span><span class="ha">See it →</span></a>
-  </div>
-</div></section>
-
-<section id="flow"><div class="wrap">
-  <div class="flow">
-    <div class="rv">
-      <p class="kicker">The idea behind the work</p>
-      <h2>One record. Everything else follows.</h2>
-      <p class="sub">Most of my work comes back to the same pattern: get every channel feeding one trustworthy record, then let pricing, stock, sales and finance read from it instead of retyping it.</p>
-    </div>
-    <div class="graph rv" aria-label="Animated illustration of client inquiries flowing into one record that drives pricing, stock, sales and finance">
-      <div class="bar"><span>operations_graph.svg</span><span>illustration</span></div>
-      <svg viewBox="0 0 520 400" role="img" aria-label="Inquiries from walk-ins, web forms, social media and WhatsApp flow into one record, which drives pricing, stock, sales and finance.">
-        <g id="edges">
-          <path id="e1" d="M118,60 C190,60 190,200 222,200" class="ln"/>
-          <path id="e2" d="M118,150 C190,150 190,200 222,200" class="ln"/>
-          <path id="e3" d="M118,250 C190,250 190,200 222,200" class="ln"/>
-          <path id="e4" d="M118,340 C190,340 190,200 222,200" class="ln"/>
-          <path id="f1" d="M298,200 C330,200 330,60 402,60" class="ln"/>
-          <path id="f2" d="M298,200 C330,200 330,150 402,150" class="ln"/>
-          <path id="f3" d="M298,200 C330,200 330,250 402,250" class="ln"/>
-          <path id="f4" d="M298,200 C330,200 330,340 402,340" class="ln"/>
-        </g>
-        <g>
-          <rect x="10" y="40" width="108" height="40" rx="10" class="node"/><text x="64" y="65" text-anchor="middle">Walk-ins</text>
-          <rect x="10" y="130" width="108" height="40" rx="10" class="node"/><text x="64" y="155" text-anchor="middle">Web forms</text>
-          <rect x="10" y="230" width="108" height="40" rx="10" class="node"/><text x="64" y="255" text-anchor="middle">Social</text>
-          <rect x="10" y="320" width="108" height="40" rx="10" class="node"/><text x="64" y="345" text-anchor="middle">WhatsApp</text>
-          <rect x="402" y="40" width="108" height="40" rx="10" class="node"/><text x="456" y="65" text-anchor="middle">Pricing</text>
-          <rect x="402" y="130" width="108" height="40" rx="10" class="node"/><text x="456" y="155" text-anchor="middle">Stock</text>
-          <rect x="402" y="230" width="108" height="40" rx="10" class="node"/><text x="456" y="255" text-anchor="middle">Sales</text>
-          <rect x="402" y="320" width="108" height="40" rx="10" class="node"/><text x="456" y="345" text-anchor="middle">Finance</text>
-          <g class="core"><rect x="222" y="150" width="76" height="100" rx="16" class="acc"/>
-          <text x="260" y="192" text-anchor="middle" class="t">One</text><text x="260" y="218" text-anchor="middle" class="t">record</text></g>
-        </g>
-        <g>
-          <circle r="4" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0s"><mpath href="#e1"/></animateMotion></circle>
-          <circle r="4" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0.8s"><mpath href="#e2"/></animateMotion></circle>
-          <circle r="4" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" begin="1.6s"><mpath href="#e3"/></animateMotion></circle>
-          <circle r="4" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2.4s"><mpath href="#e4"/></animateMotion></circle>
-          <circle r="4" class="pulse2"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0.4s"><mpath href="#f1"/></animateMotion></circle>
-          <circle r="4" class="pulse2"><animateMotion dur="3.2s" repeatCount="indefinite" begin="1.2s"><mpath href="#f2"/></animateMotion></circle>
-          <circle r="4" class="pulse2"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2s"><mpath href="#f3"/></animateMotion></circle>
-          <circle r="4" class="pulse2"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2.8s"><mpath href="#f4"/></animateMotion></circle>
-        </g>
-      </svg>
-      <div class="ticker" aria-hidden="true"><b>›</b><span id="tick">inquiry received → client record updated</span></div>
-    </div>
   </div>
 </div></section>
 
@@ -599,7 +552,7 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
 
   <article class="case spot rv" id="case-01" style="--vt:case1" data-roles="systems product">
     <div class="top"><span class="num">CASE 01 · ERP &amp; CRM</span><span class="badge">Relevant</span></div>
-    <h3>ERP and CRM for a multi-branch luxury watch retailer</h3>
+    <h3>ERP and CRM for Vintage Grail, a multi-branch luxury watch retailer</h3>
     <p>Inventory, consignments, pricing and sales were spread across spreadsheets, scripts, shared drives and messaging apps. Records for the same item didn't always match, and client inquiries arrived through walk-ins, web forms, social media and WhatsApp with no single client record. I ran discovery with operations and management, wrote the requirements, and built the systems that are consolidating it onto one platform.</p>
     <p class="result">Manila system live about ten weeks after the build started. The Hong Kong platform passed every required criterion and was adopted by staff.</p>
     <figure class="dg">
@@ -641,6 +594,71 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
       </div>
       <figcaption>Illustrative example (not real data), based on real incidents that shaped the requirements.</figcaption>
     </figure>
+    <ul class="tags"><li>Requirements &amp; acceptance criteria</li><li>Data model</li><li>Role-based access</li><li>Build vs. buy</li><li>React · Express · PostgreSQL</li><li>Frappe/ERPNext</li></ul>
+    <details>
+      <summary>Read the case study</summary>
+      <div class="grid2">
+        <div>
+          <h4>What I did</h4>
+          <ul>
+            <li>Ran discovery sessions and wrote the product requirements, acceptance criteria and sprint plan. Management approved them in May 2026.</li>
+            <li>Designed the data model, role-based access and workflow rules.</li>
+            <li>Built, launched and maintain the Manila system: inventory, receiving and daily counts, condition assessments, pricing decisions with reasons, sales statements and a finance export.</li>
+            <li>Planned and ran a time-boxed build-vs-buy test for Hong Kong and recommended the outcome.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Real incidents that shaped the design</h4>
+          <ul>
+            <li>A sale fell through when a client misread a complete set as incomplete, so each inclusion is now recorded separately.</li>
+            <li>A contract went out with the wrong model year, so documents are now generated from the item record.</li>
+            <li>A damaged item arrived with no condition record, so condition records are now required before shipping.</li>
+          </ul>
+        </div>
+      </div>
+      <h4 class="gap">The build-vs-buy decision</h4>
+      <p>A custom Hong Kong build already existed. I tested whether an open-source ERP framework could replace it: fixed timebox, fake data only, pass/fail criteria agreed in advance, a full end-to-end flow, branch isolation and field-level permissions, and hands-on testing by Hong Kong staff. Every required criterion passed, staff accepted it, and the custom build was retired. The Manila system is now moving onto the same platform.</p>
+      <h4 class="gap">The pattern behind it</h4>
+      <p>Get every channel feeding one trustworthy record, then let pricing, stock, sales and finance read from it instead of retyping it.</p>
+      <div class="graph" aria-label="Animated illustration of client inquiries flowing into one record that drives pricing, stock, sales and finance">
+      <div class="bar"><span>operations_graph.svg</span><span>illustration</span></div>
+      <svg viewBox="0 0 520 400" role="img" aria-label="Inquiries from walk-ins, web forms, social media and WhatsApp flow into one record, which drives pricing, stock, sales and finance.">
+        <g id="edges">
+          <path id="e1" d="M118,60 C190,60 190,200 222,200" class="ln"/>
+          <path id="e2" d="M118,150 C190,150 190,200 222,200" class="ln"/>
+          <path id="e3" d="M118,250 C190,250 190,200 222,200" class="ln"/>
+          <path id="e4" d="M118,340 C190,340 190,200 222,200" class="ln"/>
+          <path id="f1" d="M298,200 C330,200 330,60 402,60" class="ln"/>
+          <path id="f2" d="M298,200 C330,200 330,150 402,150" class="ln"/>
+          <path id="f3" d="M298,200 C330,200 330,250 402,250" class="ln"/>
+          <path id="f4" d="M298,200 C330,200 330,340 402,340" class="ln"/>
+        </g>
+        <g>
+          <rect x="10" y="40" width="108" height="40" rx="10" class="node"/><text x="64" y="65" text-anchor="middle">Walk-ins</text>
+          <rect x="10" y="130" width="108" height="40" rx="10" class="node"/><text x="64" y="155" text-anchor="middle">Web forms</text>
+          <rect x="10" y="230" width="108" height="40" rx="10" class="node"/><text x="64" y="255" text-anchor="middle">Social</text>
+          <rect x="10" y="320" width="108" height="40" rx="10" class="node"/><text x="64" y="345" text-anchor="middle">WhatsApp</text>
+          <rect x="402" y="40" width="108" height="40" rx="10" class="node"/><text x="456" y="65" text-anchor="middle">Pricing</text>
+          <rect x="402" y="130" width="108" height="40" rx="10" class="node"/><text x="456" y="155" text-anchor="middle">Stock</text>
+          <rect x="402" y="230" width="108" height="40" rx="10" class="node"/><text x="456" y="255" text-anchor="middle">Sales</text>
+          <rect x="402" y="320" width="108" height="40" rx="10" class="node"/><text x="456" y="345" text-anchor="middle">Finance</text>
+          <g class="core"><rect x="222" y="150" width="76" height="100" rx="16" class="acc"/>
+          <text x="260" y="192" text-anchor="middle" class="t">One</text><text x="260" y="218" text-anchor="middle" class="t">record</text></g>
+        </g>
+        <g>
+          <circle r="4" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0s"><mpath href="#e1"/></animateMotion></circle>
+          <circle r="4" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0.8s"><mpath href="#e2"/></animateMotion></circle>
+          <circle r="4" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" begin="1.6s"><mpath href="#e3"/></animateMotion></circle>
+          <circle r="4" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2.4s"><mpath href="#e4"/></animateMotion></circle>
+          <circle r="4" class="pulse2"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0.4s"><mpath href="#f1"/></animateMotion></circle>
+          <circle r="4" class="pulse2"><animateMotion dur="3.2s" repeatCount="indefinite" begin="1.2s"><mpath href="#f2"/></animateMotion></circle>
+          <circle r="4" class="pulse2"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2s"><mpath href="#f3"/></animateMotion></circle>
+          <circle r="4" class="pulse2"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2.8s"><mpath href="#f4"/></animateMotion></circle>
+        </g>
+      </svg>
+      <div class="ticker" aria-hidden="true"><b>›</b><span id="tick">inquiry received → client record updated</span></div>
+    </div>
+      <h4 class="gap">What the platform looks like</h4>
     <figure class="dg">
       <div class="scroll">
       <svg viewBox="0 0 900 360" role="img" aria-label="Illustration of the multi-branch operations platform: branches and locations held as settings, access by role, and every change kept in an audit log.">
@@ -669,30 +687,6 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
       </div>
       <figcaption>Illustration with made-up data, not a screenshot: branches as settings rather than code, access by role, and every change kept in history.</figcaption>
     </figure>
-    <ul class="tags"><li>Requirements &amp; acceptance criteria</li><li>Data model</li><li>Role-based access</li><li>Build vs. buy</li><li>React · Express · PostgreSQL</li><li>Frappe/ERPNext</li></ul>
-    <details>
-      <summary>Read the case study</summary>
-      <div class="grid2">
-        <div>
-          <h4>What I did</h4>
-          <ul>
-            <li>Ran discovery sessions and wrote the product requirements, acceptance criteria and sprint plan. Management approved them in May 2026.</li>
-            <li>Designed the data model, role-based access and workflow rules.</li>
-            <li>Built, launched and maintain the Manila system: inventory, receiving and daily counts, condition assessments, pricing decisions with reasons, sales statements and a finance export.</li>
-            <li>Planned and ran a time-boxed build-vs-buy test for Hong Kong and recommended the outcome.</li>
-          </ul>
-        </div>
-        <div>
-          <h4>Real incidents that shaped the design</h4>
-          <ul>
-            <li>A sale fell through when a client misread a complete set as incomplete, so each inclusion is now recorded separately.</li>
-            <li>A contract went out with the wrong model year, so documents are now generated from the item record.</li>
-            <li>A damaged item arrived with no condition record, so condition records are now required before shipping.</li>
-          </ul>
-        </div>
-      </div>
-      <h4 class="gap">The build-vs-buy decision</h4>
-      <p>A custom Hong Kong build already existed. I tested whether an open-source ERP framework could replace it: fixed timebox, fake data only, pass/fail criteria agreed in advance, a full end-to-end flow, branch isolation and field-level permissions, and hands-on testing by Hong Kong staff. Every required criterion passed, staff accepted it, and the custom build was retired. The Manila system is now moving onto the same platform.</p>
       <div class="callout"><b>Platform judgement:</b> for WhatsApp, I chose the official WhatsApp Business Cloud API over cheaper unofficial relays because of account-ban and terms-of-service risk, and decided a separate CRM product wasn't needed.</div>
     </details>
   </article>
@@ -870,28 +864,23 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
   </div>
 </div></section>
 
-<section id="approach"><div class="wrap">
-  <p class="kicker">Approach</p>
-  <h2>How I work.</h2>
-  <p class="sub">The same approach carries over to ERP/CRM rollouts, BI and internal tooling anywhere.</p>
-  <div class="steps rv">
-    <div class="step spot"><span class="n">01</span><h3>Discover</h3><p>Sit with the people who do the work, map the current process and collect real incidents, not hypotheticals.</p><span class="bar2"></span></div>
-    <div class="step spot"><span class="n">02</span><h3>Specify</h3><p>Requirements, acceptance criteria and pass/fail criteria agreed before anything is built.</p><span class="bar2"></span></div>
-    <div class="step spot"><span class="n">03</span><h3>Build</h3><p>Lean delivery with AI coding agents, official integrations and the least data each tool needs.</p><span class="bar2"></span></div>
-    <div class="step spot"><span class="n">04</span><h3>Adopt</h3><p>Staff testing before go-live, then training and written guides.</p><span class="bar2"></span></div>
+<section id="hats"><div class="wrap">
+  <p class="kicker">Range</p>
+  <h2>One person, many hats.</h2>
+  <p class="sub">At a lean, multi-branch business I cover roles that usually sit in different teams. Each hat below links to the work that proves it.</p>
+  <p class="swipe-hint">Swipe to see all 10 →</p>
+  <div class="hats">
+      <a class="hat rv" href="#case-01" data-roles="systems product"><span class="hn">01</span><b>Business analyst</b><span class="hp">Discovery sessions, requirements, acceptance and pass/fail criteria, staff testing.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#case-02" data-roles="bi"><span class="hn">02</span><b>BI lead</b><span class="hp">KPIs defined with management; dashboards for gross profit, close rate and inventory ageing; a pricing data pipeline.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#case-04" data-roles="ai product systems"><span class="hn">03</span><b>Product owner &amp; builder</b><span class="hp">Six systems built in 2026 by directing AI coding agents, from spec to go-live.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#case-03" data-roles="product marketing"><span class="hn">04</span><b>Web developer</b><span class="hp">A catalogue, Grail Exchange and a Shopify store, all built on my own.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#marketing" data-roles="marketing"><span class="hn">05</span><b>Marketer</b><span class="hp">Shopee mega sales, paid search, SEO and Mailchimp email campaigns.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#marketing" data-roles="marketing"><span class="hn">06</span><b>Designer</b><span class="hp">Landing pages, brand guidelines, social posts and in-app banners.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#case-03" data-roles="marketing ai"><span class="hn">07</span><b>Video producer</b><span class="hp">The Grail Exchange explainer: AI voice-over, licensed stock and scripted editing.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#marketing" data-roles="marketing"><span class="hn">08</span><b>Photographer</b><span class="hp">In-house luxury watch photography, trained by professional watch photographers in Hong Kong.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#experience" data-roles="systems product"><span class="hn">09</span><b>Trainer</b><span class="hp">Onboarding guides at Shopee; staff testing, training and guides for system rollouts.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#experience" data-roles="bi systems"><span class="hn">10</span><b>Finance mind</b><span class="hp">Three years in accounting: reconciliations and month-end close, now built into finance exports.</span><span class="ha">See it →</span></a>
   </div>
-</div></section>
-
-<section id="experience"><div class="wrap">
-  <p class="kicker">Experience</p>
-  <h2>Finance → e-commerce → systems.</h2>
-  <div class="timeline">
-    <div class="role spot rv"><div class="when">2024 – now</div><div><h3>Senior Data &amp; Systems Analyst (Head of BI) · luxury watch retailer, PH &amp; HK</h3><p>Promoted twice in one year. KPIs and dashboards, pricing, ERP/CRM and the case studies above; supervises one team member.</p></div></div>
-    <div class="role spot rv"><div class="when">2023</div><div><h3>Digital Marketing Manager · real estate developer, Dubai</h3><p>Website, paid search, content, social and analytics.</p></div></div>
-    <div class="role spot rv"><div class="when">2019 – 2022</div><div><h3>Onsite Platform Management Lead · Shopee Philippines</h3><p>Promoted through four roles in three years. Homepage priority plans and in-app execution for mega sales (9.9 to 12.12); A/B tests with the Singapore regional team; contributed to the e-wallet bills-payment launch; trained campaign owners.</p></div></div>
-    <div class="role spot rv"><div class="when">2016 – 2019</div><div><h3>Accounting Associate · CEVA Logistics (formerly Bolloré Logistics)</h3><p>Payables, receivables, reconciliations, and month-end and year-end close.</p></div></div>
-  </div>
-  <p class="note mt">Also: part-time digital strategy and SEO consulting (2024–2026). BS Information Systems, De La Salle-College of Saint Benilde (2026). Google Ads Search &amp; Analytics, HubSpot SEO.</p>
 </div></section>
 
 <section id="marketing"><div class="wrap">
@@ -917,12 +906,13 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
     <div class="mk rv" data-roles="marketing">
       <span class="n">04</span>
       <h3>Video, made with AI</h3>
-      <p>Produced client explainer and team overview videos: script, AI voice-over, green-screen presenter clips, licensed stock with sources recorded, and editing driven by a Python script. <a href="#case-03">Watch the Grail Exchange explainer ↗</a></p>
+      <p>Produced client explainer and team overview videos: AI voice-over, green-screen presenter clips, licensed stock with sources recorded, and editing driven by a Python script. <a href="#case-03">Watch the Grail Exchange explainer ↗</a></p>
     </div>
   </div>
   <div class="mk-tools"><span>Google Ads</span><span>Meta Ads</span><span>TikTok Ads</span><span>GA4</span><span>SEMrush</span><span>Google Trends</span><span>PageSpeed Insights</span><span>Mailchimp</span><span>Botcake</span><span>WhatsApp Business</span><span>Shopify</span><span>WordPress</span><span>Payload CMS</span><span>Canva</span><span>Photoshop</span><span>Lightroom</span><span>CapCut</span><span>ElevenLabs</span><span>ffmpeg</span></div>
   <h3 class="g-title">Selected marketing &amp; design work</h3>
   <p class="note g-note">From my earlier portfolio. Shopee work was done in-house (2019–2022); the rest were freelance clients. Click any image to enlarge.</p>
+  <p class="swipe-hint">Swipe through the work →</p>
   <div class="gallery">
     <article class="g-card g-wide">
       <div class="g-media g-collage"><button type="button" class="g-img" data-full="img/mkt/shopee-freeship.jpg"><img src="img/mkt/shopee-freeship.jpg" loading="lazy" alt="Shopee in-app banner"></button><button type="button" class="g-img" data-full="img/mkt/shopeepay-load.jpg"><img src="img/mkt/shopeepay-load.jpg" loading="lazy" alt="Shopee in-app banner"></button><button type="button" class="g-img" data-full="img/mkt/shopeepay-bills.jpg"><img src="img/mkt/shopeepay-bills.jpg" loading="lazy" alt="Shopee in-app banner"></button><button type="button" class="g-img" data-full="img/mkt/shopee-newuser.jpg"><img src="img/mkt/shopee-newuser.jpg" loading="lazy" alt="Shopee in-app banner"></button><button type="button" class="g-img" data-full="img/mkt/shopee-beauty.jpg"><img src="img/mkt/shopee-beauty.jpg" loading="lazy" alt="Shopee in-app banner"></button><button type="button" class="g-img" data-full="img/mkt/shopee-beauty50.jpg"><img src="img/mkt/shopee-beauty50.jpg" loading="lazy" alt="Shopee in-app banner"></button></div>
@@ -955,6 +945,18 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
   </div>
 </div></section>
 
+<section id="experience"><div class="wrap">
+  <p class="kicker">Experience</p>
+  <h2>Finance → e-commerce → systems.</h2>
+  <div class="timeline">
+    <div class="role spot rv"><div class="when">2024 – now</div><div><h3>Senior Data &amp; Systems Analyst (Head of BI) · Vintage Grail, PH &amp; HK</h3><p>Promoted twice in one year. KPIs and dashboards, pricing, ERP/CRM and the case studies above; supervises one team member.</p></div></div>
+    <div class="role spot rv"><div class="when">2023</div><div><h3>Digital Marketing Manager · real estate developer, Dubai</h3><p>Website, paid search, content, social and analytics.</p></div></div>
+    <div class="role spot rv"><div class="when">2019 – 2022</div><div><h3>Onsite Platform Management Lead · Shopee Philippines</h3><p>Promoted through four roles in three years. Homepage priority plans and in-app execution for mega sales (9.9 to 12.12); A/B tests with the Singapore regional team; contributed to the e-wallet bills-payment launch; trained campaign owners.</p></div></div>
+    <div class="role spot rv"><div class="when">2016 – 2019</div><div><h3>Accounting Associate · CEVA Logistics (formerly Bolloré Logistics)</h3><p>Payables, receivables, reconciliations, and month-end and year-end close.</p></div></div>
+  </div>
+  <p class="note mt">Also: part-time digital strategy and SEO consulting (2024–2026). BS Information Systems, De La Salle-College of Saint Benilde (2026). Google Ads Search &amp; Analytics, HubSpot SEO.</p>
+</div></section>
+
 <section id="skills"><div class="wrap">
   <p class="kicker">Toolbox</p>
   <h2>What I work with.</h2>
@@ -962,31 +964,17 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
     <div class="skill spot rv" data-roles="systems product"><h3>Business analysis</h3><p>Discovery, process mapping, requirements, user stories, acceptance criteria, user acceptance testing, Jira</p></div>
     <div class="skill spot rv" data-roles="bi"><h3>Data &amp; BI</h3><p>KPI design, dashboards (Looker Studio, Google Analytics), Excel and Google Sheets (advanced), SQL (basic), PostgreSQL</p></div>
     <div class="skill spot rv" data-roles="systems product ai"><h3>Build</h3><p>React, TypeScript, Vite, Express, Next.js, Payload CMS, Drizzle ORM, Frappe/ERPNext, Python, Apps Script, git and GitHub, Vercel, Google Cloud Run</p></div>
-    <div class="skill spot rv" data-roles="ai"><h3>AI</h3><p>Claude Code, Codex, Replit Agent, Claude API, MCP servers, ElevenLabs, prompt design with guardrails</p></div>
-    <div class="skill spot rv" data-roles="marketing"><h3>Ads &amp; search</h3><p>Google Ads, Meta Ads, TikTok Ads, GA4, SEO with SEMrush, Google Trends and PageSpeed Insights, campaign planning</p></div>
-    <div class="skill spot rv" data-roles="marketing systems"><h3>Email, CRM &amp; messaging</h3><p>Email marketing in Mailchimp, Botcake, WhatsApp Business Cloud API, client databases with contact history</p></div>
-    <div class="skill spot rv" data-roles="marketing product"><h3>Commerce &amp; web</h3><p>Shopify, WordPress, Payload CMS, landing pages, product listings and catalogues, e-commerce operations</p></div>
-    <div class="skill spot rv" data-roles="marketing"><h3>Design &amp; video</h3><p>Canva, Adobe Photoshop, Lightroom, CapCut, ElevenLabs voice-over, ffmpeg</p></div>
-    <div class="skill spot rv" data-roles="bi systems"><h3>Workplace &amp; domain</h3><p>Microsoft Office, Google Workspace · luxury retail and watches, marketplaces, e-wallet payments, finance operations</p></div>
+    <div class="skill spot rv more" data-roles="ai"><h3>AI</h3><p>Claude Code, Codex, Replit Agent, Claude API, MCP servers, ElevenLabs, prompt design with guardrails</p></div>
+    <div class="skill spot rv more" data-roles="marketing"><h3>Ads &amp; search</h3><p>Google Ads, Meta Ads, TikTok Ads, GA4, SEO with SEMrush, Google Trends and PageSpeed Insights, campaign planning</p></div>
+    <div class="skill spot rv more" data-roles="marketing systems"><h3>Email, CRM &amp; messaging</h3><p>Email marketing in Mailchimp, Botcake, WhatsApp Business Cloud API, client databases with contact history</p></div>
+    <div class="skill spot rv more" data-roles="marketing product"><h3>Commerce &amp; web</h3><p>Shopify, WordPress, Payload CMS, landing pages, product listings and catalogues, e-commerce operations</p></div>
+    <div class="skill spot rv more" data-roles="marketing"><h3>Design &amp; video</h3><p>Canva, Adobe Photoshop, Lightroom, CapCut, ElevenLabs voice-over, ffmpeg</p></div>
+    <div class="skill spot rv more" data-roles="bi systems"><h3>Workplace &amp; domain</h3><p>Microsoft Office, Google Workspace · luxury retail and watches, marketplaces, e-wallet payments, finance operations</p></div>
   </div>
+  <button type="button" class="btn showtools" id="showtools" aria-expanded="false">Show all tools (9 groups)</button>
+</div>
 </div></section>
 
-<section id="colophon"><div class="wrap">
-  <div class="colophon rv">
-    <div>
-      <p class="kicker">Colophon</p>
-      <h2>This site is a case study too.</h2>
-      <p class="sub">I built it the same way as case 04: by directing an AI coding agent, with every claim checked against my own records before it went live.</p>
-    </div>
-    <ol>
-      <li>Wrote the content from sanitised case-study notes.</li>
-      <li>An AI agent built the page; diagrams are hand-written SVG.</li>
-      <li>A second, independent AI review checked accuracy and privacy.</li>
-      <li>Mikee Bot answers only from my verified notes: no live AI model, so it can't make things up.</li>
-      <li>I approved every fix and the go-live.</li>
-    </ol>
-  </div>
-</div></section>
 </main>
 
 <footer id="contact"><div class="wrap">
@@ -1007,7 +995,7 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
     <a class="btn li" href="https://www.linkedin.com/in/mike-gooden/" target="_blank" rel="noopener" data-li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg> LinkedIn</a>
     <a class="btn cvbtn" href="cv/Michael-Angelo-Gooden-CV.pdf" download data-cv>Download CV (PDF)</a>
   </div>
-  <p class="fine">© 2026 Michael Angelo Gooden · Case studies are sanitised; no confidential data, code or client details are shown. Press <kbd>⌘</kbd> <kbd>K</kbd> to explore, or ask Mikee Bot.</p>
+  <p class="fine">© 2026 Michael Angelo Gooden · Built by directing an AI coding agent, with every claim checked against my own records; illustrations use made-up data. Mikee Bot answers only from my verified notes. Press <kbd>⌘</kbd> <kbd>K</kbd> to explore.</p>
 </div></footer>
 
 <button class="botfab" id="botfab" type="button" aria-controls="bot" aria-expanded="false"><span class="botav"><img src="mikee.jpg" alt=""></span><span>Ask Mikee Bot</span></button>
@@ -1132,8 +1120,8 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
     ['Case 01 · ERP & CRM','case',go('case-01')],['Case 02 · Pricing intelligence','case',go('case-02')],
     ['Case 03 · Web platforms','case',go('case-03')],['Case 04 · AI-driven delivery','case',go('case-04')],
     ['Many hats','section',go('hats')],
-    ['How I work','section',go('approach')],['Experience','section',go('experience')],['Toolbox','section',go('skills')],
-    ['How this site was built','section',go('colophon')],['Contact','section',go('contact')],
+    ['Experience','section',go('experience')],['Toolbox','section',go('skills')],
+    ['Contact','section',go('contact')],
     ['Tailor for BI & data','tailor',function(){tailor('bi',true);go('work')()}],
     ['Tailor for business systems','tailor',function(){tailor('systems',true);go('work')()}],
     ['Tailor for product & delivery','tailor',function(){tailor('product',true);go('work')()}],
@@ -1276,7 +1264,7 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
      acts:[['Tailor page for BI','tailor:bi']],next:['pricing','erp']},
     {id:'requirements',k:['business analysis','requirements','process','workshop','stakeholder','discovery','acceptance','uat','jira','transformation','delivery','project manage'],
      a:"His approach: sit with the people doing the work and collect real incidents, write requirements with acceptance and pass/fail criteria, build lean, then test with staff before go-live and train users. He tracks delivery in Jira and works with operations, finance and management across two countries.",
-     acts:[['How he works','go:approach']],next:['erp','team']},
+     acts:[['See case 01','go:case-01']],next:['erp','team']},
     {id:'marketing',k:['marketing','content','seo','ads','social media','design','canva','brand','creative','graphics','email marketing','mailchimp','newsletter','edm','semrush','meta ads','tiktok'],
      a:"He started on the marketing side: Shopee campaign execution, paid search and analytics in Dubai, SEO consulting, email campaigns in Mailchimp, and e-commerce content. He also designed landing pages, brand guidelines and social posts for freelance clients, and produces short videos, including AI voice-over work.",
      acts:[['See marketing work','go:marketing'],['Tailor for marketing','tailor:marketing']],next:['shopee','web']},
@@ -1439,6 +1427,10 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
   /* teaser after a few seconds, once per session, desktop only */
   var seen=false;try{seen=!!sessionStorage.getItem('mg-bot-seen')}catch(e){}
   if(!seen&&matchMedia('(min-width:641px)').matches){setTimeout(function(){if(!bot.classList.contains('open'))teaser.classList.add('show');setTimeout(function(){teaser.classList.remove('show')},9000)},5000)}
+
+  /* toolbox toggle */
+  var stb=$('#showtools');
+  if(stb){stb.addEventListener('click',function(){var g=$('#skills .skills');var o=g.classList.toggle('all');stb.setAttribute('aria-expanded',String(o));stb.textContent=o?'Show fewer':'Show all tools (9 groups)';if(o)$$('.skill.more').forEach(function(s){s.classList.add('in')})})}
   window.addEventListener('beforeprint',function(){$$('details').forEach(function(d){d.open=true});$$('.rv').forEach(function(r){r.classList.add('in')})});
 })();
 </script>
