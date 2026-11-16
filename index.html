@@ -12,155 +12,663 @@
 <meta property="og:title" content="Mikee Gooden: business systems, BI and AI-driven delivery">
 <meta property="og:description" content="Case studies in ERP/CRM delivery, pricing intelligence, web platforms and building with AI coding agents.">
 <meta property="og:url" content="https://mikee008.github.io/">
-<meta name="theme-color" content="#1f4e79">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f4e79'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3EMG%3C/text%3E%3C/svg%3E">
+<meta property="og:image" content="https://mikee008.github.io/mikee.jpg">
+<meta name="theme-color" content="#ffffff">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111'/%3E%3Ctext x='32' y='41' font-family='Helvetica,Arial,sans-serif' font-size='24' font-weight='600' fill='%23fff' text-anchor='middle'%3EMG%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f7f6f2; --surface:#ffffff; --ink:#1b1f27; --muted:#5b6270; --line:#e3e0d8;
-  --accent:#1f4e79; --accent-soft:#e6eef6; --tag:#f0ede6; --nav:rgba(247,246,242,.92);
+  --bg:#ffffff; --paper:#ffffff; --soft:#f6f6f5; --ink:#111111; --muted:#6b6b6b; --line:#e7e7e5; --rule:#111111;
+  --accent:#111111; --ok:#1a7f4b; --bad:#c2410c;
 }
 @media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --bg:#121418; --surface:#1a1d23; --ink:#eceef2; --muted:#a3a9b5; --line:#2b2f37;
-    --accent:#8db8e3; --accent-soft:#1d2a38; --tag:#23272f; --nav:rgba(18,20,24,.92);
-  }
+  :root:not([data-theme="light"]){--bg:#0e0e0e;--paper:#0e0e0e;--soft:#171717;--ink:#f2f2f2;--muted:#9a9a9a;--line:#262626;--rule:#f2f2f2;--accent:#f2f2f2;--ok:#4ade80;--bad:#fb923c}
 }
-:root[data-theme="dark"]{
-  --bg:#121418; --surface:#1a1d23; --ink:#eceef2; --muted:#a3a9b5; --line:#2b2f37;
-  --accent:#8db8e3; --accent-soft:#1d2a38; --tag:#23272f; --nav:rgba(18,20,24,.92);
-}
+:root[data-theme="dark"]{--bg:#0e0e0e;--paper:#0e0e0e;--soft:#171717;--ink:#f2f2f2;--muted:#9a9a9a;--line:#262626;--rule:#f2f2f2;--accent:#f2f2f2;--ok:#4ade80;--bad:#fb923c}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:var(--accent)}
-.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
-.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:var(--bg);padding:8px 12px;border-radius:8px;z-index:10}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Geist,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:var(--ink);text-underline-offset:3px;text-decoration-thickness:1px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.mono{font-family:"Geist Mono",ui-monospace,monospace}
+.hand{font:inherit}
+.grad{color:inherit}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:var(--bg);padding:8px 12px;z-index:30;border-radius:6px}
 .skip:focus{left:16px}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
-nav{position:sticky;top:0;z-index:5;background:var(--nav);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
-nav .brand{font-weight:700;text-decoration:none;color:var(--ink);white-space:nowrap}
-.right{display:flex;align-items:center;gap:14px;min-width:0}
-nav .links{display:flex;gap:18px;font-size:14px;overflow-x:auto}
-nav .links a{color:var(--muted);text-decoration:none;white-space:nowrap}
-nav .links a:hover{color:var(--ink)}
-.theme{background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;width:34px;height:34px;flex:none;cursor:pointer;font-size:15px;line-height:1}
-.theme:hover{color:var(--ink)}
-header{padding:72px 0 48px}
-.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 12px}
-h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(32px,5.6vw,52px);line-height:1.1;margin:0 0 18px;letter-spacing:-.01em;max-width:900px}
-.lede{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:720px;margin:0 0 12px}
-.where{font-size:15px;color:var(--ink);font-weight:500;margin:0 0 28px}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px}
+
+nav{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:500;text-decoration:none;color:var(--ink);white-space:nowrap}
+.logo{display:none}
+.right{display:flex;align-items:center;gap:6px;min-width:0}
+.links{display:flex;gap:26px;font-size:14px;margin-right:12px}
+.links a{color:var(--muted);text-decoration:none}
+.links a:hover{color:var(--ink)}
+.iconbtn{background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;height:32px;min-width:32px;padding:0 8px;cursor:pointer;font:500 12px "Geist Mono",monospace;display:inline-flex;align-items:center;gap:4px}
+.iconbtn:hover{color:var(--ink);border-color:var(--ink)}
+kbd{font:500 11px "Geist Mono",monospace;border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:var(--muted)}
+
+header{padding:88px 0 40px}
+.hero{display:grid;grid-template-columns:1fr 300px;gap:72px;align-items:end}
+.status{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-bottom:28px}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--ok)}
+h1{font:500 clamp(34px,4.2vw,48px)/1.16 Geist,"Helvetica Neue",sans-serif;letter-spacing:-.035em;margin:0 0 26px}
+h1 .line{display:block;overflow:hidden;padding-bottom:.05em}
+h1 .line span{display:inline-block;transform:translateY(100%);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+h1 .line:nth-child(2) span{animation-delay:.08s}
+h1 .line:nth-child(3) span{animation-delay:.16s}
+h1 .grad{color:var(--muted)}
+@keyframes rise{to{transform:none}}
+.lede{font-size:18px;color:var(--muted);max-width:580px;margin:0 0 10px;transition:opacity .25s}
+.where{font-size:14px;color:var(--muted);margin:0 0 36px}
+.picker{margin:0 0 32px}
+.picker p{font-size:13px;color:var(--muted);margin:0 0 10px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:none;color:var(--ink);border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.chip:hover{border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .cta{display:flex;flex-wrap:wrap;gap:10px}
-.btn{display:inline-block;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--accent)}
-.btn.primary{background:var(--accent);color:var(--bg)}
-.btn.ghost{color:var(--accent)}
-.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:40px}
-.fact{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
-.fact b{display:block;font-size:15px}
-.fact span{color:var(--muted);font-size:14px}
-section{padding:56px 0;border-top:1px solid var(--line)}
-h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);margin:0 0 8px}
-.sub{color:var(--muted);margin:0 0 28px;max-width:720px}
-.cases{display:grid;gap:18px}
-.case{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;transition:border-color .2s}
-.case:hover{border-color:var(--accent)}
-.case .num{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:.06em}
-.case h3{font-size:21px;margin:6px 0 8px;line-height:1.3}
-.case p{margin:0 0 12px}
-.result{border-left:3px solid var(--accent);padding:2px 0 2px 12px;font-weight:500}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 4px;padding:0;list-style:none}
-.tags li{background:var(--tag);border-radius:999px;padding:3px 10px;font-size:13px;color:var(--muted)}
-details{margin-top:12px;border-top:1px dashed var(--line);padding-top:12px}
-summary{cursor:pointer;font-weight:600;color:var(--accent);list-style:none}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;text-decoration:none;font:500 14.5px Geist,sans-serif;border:1px solid var(--line);color:var(--ink);background:none;cursor:pointer;transition:border-color .2s,opacity .2s}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.primary:hover{opacity:.85}
+
+.portrait{position:relative;width:100%}
+.portrait .frame{position:relative}
+.portrait img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center 30%;border-radius:12px;filter:grayscale(1) contrast(1.02);transition:filter .6s ease}
+.portrait:hover img{filter:none}
+.float{display:none}
+.f2{display:block;position:static;margin-top:12px;font-size:13px;color:var(--muted)}
+
+.portrait{perspective:1000px}
+.p3d{position:relative;aspect-ratio:1;margin-top:56px;transform-style:preserve-3d;transition:transform .25s ease-out;will-change:transform}
+.p3d-bg{position:absolute;inset:0;border-radius:18px;background:repeating-radial-gradient(circle at 50% 38%,transparent 0 26px,var(--line) 26px 27px),var(--soft);transform:translateZ(-40px) scale(1.04)}
+.p3d-sub{position:absolute;left:-7%;bottom:0;width:114%;height:auto;clip-path:inset(-40% 6.15% 0 6.15% round 0 0 18px 18px);transform:translateZ(50px);filter:grayscale(1) drop-shadow(0 24px 30px rgba(0,0,0,.18));transition:filter .6s ease}
+.portrait:hover .p3d-sub{filter:grayscale(0) drop-shadow(0 24px 30px rgba(0,0,0,.18))}
+.p3d-tag{position:absolute;left:14px;bottom:14px;display:flex;align-items:center;gap:7px;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12.5px;transform:translateZ(90px);box-shadow:0 8px 24px -10px rgba(0,0,0,.25)}
+@keyframes sway{0%,100%{transform:rotateY(-6deg) rotateX(3deg)}50%{transform:rotateY(6deg) rotateX(-2deg)}}
+@media (pointer:coarse){.p3d{animation:sway 7s ease-in-out infinite}}
+.shots{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:28px 0 10px}
+.shot{min-width:0;position:relative;display:block;text-decoration:none;color:var(--ink);padding-bottom:28px}
+.win{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--bg);transition:transform .4s cubic-bezier(.2,.8,.2,1),box-shadow .4s}
+.winbar{display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;border-bottom:1px solid var(--line);background:var(--soft)}
+.winbar i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.winbar span{margin-left:10px;font:500 11.5px "Geist Mono",monospace;color:var(--muted)}
+.win img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.phone{position:absolute;right:-6px;bottom:0;width:24%;height:auto;border-radius:14px;border:4px solid var(--ink);box-shadow:0 20px 40px -18px rgba(0,0,0,.4);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.shot:hover .win{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(0,0,0,.35)}
+.shot:hover .phone{transform:translateY(-10px) rotate(-2deg)}
+.cap{position:absolute;left:12px;bottom:40px;display:grid;gap:1px;padding:9px 14px;border-radius:12px;font-size:13px;max-width:70%}
+.cap b{font-weight:500}
+.cap small{color:var(--muted);font-size:12px}
+.glass{background:color-mix(in srgb,var(--bg) 62%,transparent);-webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);border:1px solid color-mix(in srgb,var(--ink) 10%,transparent);box-shadow:0 8px 32px -12px rgba(0,0,0,.2),inset 0 1px 0 color-mix(in srgb,#fff 50%,transparent)}
+body::before{content:"";position:fixed;z-index:-1;pointer-events:none;width:60vw;height:60vw;max-width:780px;max-height:780px;right:-12vw;top:-18vw;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,#9db4ff 30%,transparent),transparent 65%);filter:blur(20px)}
+body::after{content:"";position:fixed;z-index:-1;pointer-events:none;width:50vw;height:50vw;max-width:640px;max-height:640px;left:-16vw;bottom:-20vw;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,#b9e4d4 30%,transparent),transparent 65%);filter:blur(20px)}
+@media (max-width:640px){.shots{grid-template-columns:1fr}.phone{width:26%}}
+.flow{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.graph{border:1px solid var(--line);border-radius:12px;padding:16px}
+.graph .bar{display:flex;justify-content:space-between;font:500 12px "Geist Mono",monospace;color:var(--muted);padding:0 2px 12px}
+.graph svg{display:block;width:100%;height:auto;color:var(--ink);font-family:Geist,sans-serif}
+.ticker{font:500 12px "Geist Mono",monospace;color:var(--muted);border-top:1px solid var(--line);padding:12px 2px 0;min-height:32px;display:flex;gap:8px}
+.ticker b{color:var(--ink);font-weight:500}
+.ticker span{transition:opacity .3s}
+.marquee{display:none}
+
+section{padding:96px 0;border-top:1px solid var(--line)}
+.kicker{font-size:13px;color:var(--muted);margin:0 0 14px}
+h2{font:500 clamp(28px,3.6vw,40px)/1.12 Geist,sans-serif;letter-spacing:-.03em;margin:0 0 14px}
+.sub{color:var(--muted);margin:0 0 44px;max-width:620px}
+
+#numbers{border-top:0;padding:24px 0 72px}
+.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+.tile{padding:24px 24px 0 0}
+.tile .big{font:500 44px/1 Geist,sans-serif;letter-spacing:-.04em}
+.tile .big small{font-size:18px!important;color:var(--muted)}
+.tile .lbl{color:var(--muted);font-size:14px;margin-top:10px;max-width:220px}
+
+.spot::after{display:none}
+.cases{display:grid;gap:0;grid-template-columns:minmax(0,1fr)}.case{min-width:0}
+.case{padding:56px 0;border-top:1px solid var(--line);transition:opacity .3s}
+.case:first-child{border-top:0;padding-top:8px}
+.case.dim{opacity:.4}
+.case .top{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}
+.num{font:500 12px "Geist Mono",monospace;color:var(--muted);letter-spacing:.02em}
+.badge{display:none;font-size:12px;border:1px solid var(--ink);border-radius:999px;padding:2px 10px}
+.case.match .badge{display:inline-block}
+.case h3{font:500 clamp(24px,2.8vw,32px)/1.15 Geist,sans-serif;letter-spacing:-.025em;margin:14px 0 14px;max-width:760px}
+.case p{margin:0 0 14px;max-width:720px;color:var(--muted)}
+.result{color:var(--ink)!important;font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:20px 0 4px;padding:0;list-style:none}
+.tags li{font:500 12px "Geist Mono",monospace;color:var(--muted);background:var(--soft);border-radius:6px;padding:3px 8px}
+details{margin-top:18px}
+summary{cursor:pointer;font-size:14px;font-weight:500;color:var(--ink);list-style:none;display:inline-flex;gap:6px;align-items:center}
 summary::-webkit-details-marker{display:none}
-summary::after{content:" +"}
-details[open] summary::after{content:" −"}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:14px}
-h4{margin:0 0 6px;font-size:15px}
-h4.gap{margin-top:18px}
-.grid2 ul{margin:0;padding-left:18px}
-.grid2 li{margin-bottom:4px;font-size:15px}
-.table-wrap{overflow-x:auto;margin-top:10px}
-table{width:100%;border-collapse:collapse;font-size:14px}
-caption{text-align:left;font-size:13px;color:var(--muted);padding-bottom:6px}
-th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
-th{color:var(--muted);font-weight:600}
-.callout{background:var(--accent-soft);border-radius:12px;padding:14px 16px;font-size:15px;margin-top:12px}
-.timeline{display:grid;gap:14px}
-.role{display:grid;grid-template-columns:170px 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
-.role .when{color:var(--muted);font-size:14px}
-.role h3{margin:0 0 4px;font-size:17px}
-.role p{margin:0;color:var(--muted);font-size:15px}
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
-.skill{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
-.skill h3{font-size:15px;margin:0 0 6px}
-.skill p{margin:0;color:var(--muted);font-size:14px}
-footer{padding:48px 0 64px;border-top:1px solid var(--line)}
-footer p{color:var(--muted);font-size:14px}
+summary::after{content:"↓";transition:transform .2s}
+details[open] summary::after{transform:rotate(180deg)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:36px;margin-top:20px}
+h4{margin:0 0 8px;font-size:14px;font-weight:500}
+h4.gap{margin-top:24px}
+.grid2 ul{margin:0;padding-left:18px;color:var(--muted)}
+.grid2 li{margin-bottom:6px;font-size:15px}
+details p{color:var(--muted)}
+.table-wrap{overflow-x:auto;margin-top:12px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+caption{text-align:left;font-size:13px;color:var(--muted);padding-bottom:8px}
+th,td{text-align:left;padding:10px 12px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-weight:500;color:var(--muted)}
+.callout{background:var(--soft);border-radius:10px;padding:14px 16px;font-size:15px;margin-top:16px}
 .note{font-size:13px;color:var(--muted)}
 .mt{margin-top:16px}
-.fine{margin-top:28px}
-@media (max-width:700px){
-  header{padding:44px 0 32px}
-  .grid2{grid-template-columns:1fr}
+
+.dg{margin:28px 0 10px}
+.dg .scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;padding:16px}
+.dg svg{display:block;width:100%;min-width:760px;height:auto;color:var(--ink);font-family:Geist,sans-serif}
+.dg figcaption{font-size:13px;color:var(--muted);margin-top:10px}
+.dg rect,.graph rect{rx:8px}
+.dg .b{fill:var(--bg);stroke:var(--line);stroke-width:1.2}
+.dg .ai{stroke:var(--muted);stroke-dasharray:5 4;animation:march 1.6s linear infinite}
+@keyframes march{to{stroke-dashoffset:-18}}
+.dg .acc,.graph .acc{fill:var(--soft);stroke:var(--ink);stroke-width:1.2}
+.dg .ln,.graph .ln{stroke:currentColor;stroke-width:1;fill:none;opacity:.35}
+.dg .dash{stroke-dasharray:4 4}
+.dg .lna{stroke:var(--ink);stroke-width:1.2;fill:none;opacity:.8}
+.dg text,.graph text{fill:currentColor;font-size:13px}
+.dg .t,.graph .t{font-weight:500;font-size:14px}
+.dg .s,.graph .s{fill:var(--muted);font-size:11.5px}
+.dg .h{fill:var(--muted);font:500 11px "Geist Mono",monospace;letter-spacing:.06em}
+.dg .at{fill:var(--ink);font-weight:500;font-size:12px}
+.dg .bad{fill:var(--bad);font-weight:500;font-size:12px}
+.dg .ph{fill:var(--line)}
+.dg .tg{fill:var(--soft)}
+.dg .pill{fill:var(--bg);stroke:var(--ink)}
+.dg .btnf{fill:var(--ink)}
+.dg .bt{fill:var(--bg);font-weight:500;font-size:12px}
+.dg .mk{fill:currentColor;opacity:.5}
+.dg .mka{fill:var(--ink)}
+.pulse{fill:var(--ink)}
+.pulse2{fill:var(--muted)}
+.graph .node{fill:var(--bg);stroke:var(--line);stroke-width:1.2}
+.graph .core{animation:none}
+.seg{display:inline-flex;background:var(--soft);border-radius:999px;padding:3px;margin-bottom:12px}
+.seg button{border:0;background:none;color:var(--muted);font:500 13px Geist,sans-serif;padding:6px 14px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--bg);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.state{transition:opacity .4s}
+.state.off{opacity:0;pointer-events:none}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.step{position:relative;padding-top:20px;border-top:1px solid var(--line)}
+.step .n{font:500 12px "Geist Mono",monospace;color:var(--muted)}
+.step h3{font-size:17px;font-weight:500;margin:8px 0 6px}
+.step p{margin:0;color:var(--muted);font-size:15px}
+.step .bar2{position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--ink);transition:width 1s ease}
+.in .step .bar2{width:100%}
+.in .step:nth-child(2) .bar2{transition-delay:.15s}.in .step:nth-child(3) .bar2{transition-delay:.3s}.in .step:nth-child(4) .bar2{transition-delay:.45s}
+
+.timeline{border-top:1px solid var(--line)}
+.role{display:grid;grid-template-columns:160px 1fr;gap:24px;padding:24px 0;border-bottom:1px solid var(--line)}
+.role .when{font:500 13px "Geist Mono",monospace;color:var(--muted);padding-top:2px}
+.role h3{margin:0 0 4px;font-size:16px;font-weight:500}
+.role p{margin:0;color:var(--muted);font-size:15px}
+
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:36px 32px}
+.skill{transition:opacity .3s}
+.skill h3{font-size:14px;font-weight:500;margin:0 0 6px}
+.skill p{margin:0;color:var(--muted);font-size:15px}
+.skill.match h3::after{content:" ●";font-size:9px;vertical-align:middle;color:var(--ok)}
+
+.colophon{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:start}
+.colophon .sub{margin-bottom:0}
+.colophon ol{margin:0;padding-left:20px;color:var(--muted)}
+.colophon li{margin-bottom:8px}
+
+footer{padding:120px 0 140px;border-top:1px solid var(--line)}
+footer h2{font-size:clamp(34px,5.4vw,60px);max-width:760px}
+footer .cta{margin-top:28px}
+.fine{margin-top:72px;color:var(--muted);font-size:13px}
+
+.rv{opacity:0;transform:translateY(12px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+.pal{position:fixed;inset:0;z-index:40;display:none;align-items:flex-start;justify-content:center;padding:14vh 16px 16px;background:color-mix(in srgb,var(--bg) 55%,transparent);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.pal.open{display:flex}
+.pal .box{width:min(540px,100%);background:var(--bg);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 70px -20px rgba(0,0,0,.25);overflow:hidden}
+.pal input{width:100%;border:0;border-bottom:1px solid var(--line);background:none;color:var(--ink);font:inherit;font-size:16px;padding:16px 18px;outline:none}
+.pal ul{list-style:none;margin:0;padding:6px;max-height:50vh;overflow:auto}
+.pal li{padding:9px 12px;border-radius:8px;cursor:pointer;display:flex;justify-content:space-between;gap:10px;font-size:14.5px}
+.pal li span{color:var(--muted);font:500 12px "Geist Mono",monospace}
+.pal li[aria-selected="true"]{background:var(--soft)}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,16px);opacity:0;background:var(--ink);color:var(--bg);padding:9px 16px;border-radius:999px;font-size:14px;transition:all .3s;z-index:50}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-backdrop-filter:blur(16px) saturate(1.6)!important;backdrop-filter:blur(16px) saturate(1.6)!important;border-bottom:1px solid color-mix(in srgb,var(--ink) 8%,transparent)}
+.hud,.drawer,.pal .box,.p3d-tag{background:color-mix(in srgb,var(--bg) 62%,transparent);-webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);border:1px solid color-mix(in srgb,var(--ink) 10%,transparent)}
+.chip:not([aria-pressed="true"]),.btn:not(.primary),.iconbtn{background:color-mix(in srgb,var(--bg) 55%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.mk-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.mk{border-top:1px solid var(--line);padding-top:20px;transition:opacity .3s}
+.mk .n{font:500 12px "Geist Mono",monospace;color:var(--muted)}
+.mk h3{font-size:17px;font-weight:500;margin:8px 0 6px}
+.mk p{margin:0;color:var(--muted);font-size:15px}
+.mk-tools{display:flex;flex-wrap:wrap;gap:6px;margin-top:36px}
+.mk-tools span{font:500 12px "Geist Mono",monospace;color:var(--muted);background:var(--soft);border-radius:6px;padding:3px 8px}
+@media (max-width:900px){.mk-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.mk-grid{grid-template-columns:1fr}}
+.shot.wide{grid-column:1/-1}
+.shot.wide .phone{width:15%;right:2%}
+.shot.wide .win img{aspect-ratio:16/8}
+.cvbtn{display:inline-flex;align-items:center;gap:6px}
+.nav-cv{font-size:13px;text-decoration:none;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:5px 12px;margin-right:4px}
+.nav-cv:hover{border-color:var(--ink)}
+@media (max-width:640px){.shot.wide .phone{width:24%}.shot.wide .win img{aspect-ratio:16/10}.nav-cv{padding:5px 10px}}
+.btn.wa{gap:8px}
+.btn.wa svg{color:#25d366}
+.g-title{font-size:20px;font-weight:500;letter-spacing:-.02em;margin:72px 0 6px}
+.g-note{margin:0 0 24px}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.g-card{min-width:0;display:flex;flex-direction:column;gap:12px}
+.g-wide{grid-column:1/-1}
+.g-tall{grid-row:span 2}
+.g-media{border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--soft)}
+.g-img{display:block;border:0;padding:0;margin:0;background:none;cursor:zoom-in;width:100%}
+.g-img img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.g-img:hover img{transform:scale(1.03)}
+.g-collage{display:flex;flex-wrap:nowrap;gap:8px;padding:8px;overflow-x:auto;scrollbar-width:thin}
+.g-collage .g-img{flex:none;height:220px;width:auto;border-radius:6px;overflow:hidden}
+.g-collage .g-img img{width:auto;height:220px;object-fit:contain}
+.g-row3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line)}
+.g-row3 .g-img{aspect-ratio:1}
+.g-scroll{height:520px;position:relative}
+.g-scroll .g-img{height:100%}
+.g-scroll img{height:auto;object-fit:initial;transform:translateY(0);transition:transform 6s linear}
+.g-scroll:hover img{transform:translateY(calc(-100% + 520px))}
+.g-videos{display:flex;gap:8px;padding:8px;justify-content:center;overflow-x:auto}
+.g-videos video{display:block;height:380px;width:auto;flex:none;border-radius:8px;background:#000}
+.gallery .g-card:nth-of-type(5){grid-column:span 2}
+.g-meta b{display:block;font-weight:500;font-size:15px}
+.g-meta span{display:block;color:var(--muted);font-size:13.5px}
+.lb{position:fixed;inset:0;z-index:65;display:none;align-items:center;justify-content:center;padding:24px;background:color-mix(in srgb,var(--bg) 80%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);cursor:zoom-out}
+.lb.open{display:flex}
+.lb img{max-width:min(1100px,100%);max-height:90vh;border-radius:10px;box-shadow:0 30px 80px -20px rgba(0,0,0,.4);object-fit:contain}
+.lb.tall{align-items:flex-start;overflow:auto}
+.lb.tall img{max-height:none}
+@media (max-width:900px){.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.gallery .g-card:nth-of-type(5){grid-column:auto}.g-tall{grid-row:auto}.g-scroll{height:420px}.g-scroll:hover img{transform:translateY(calc(-100% + 420px))}}
+@media (max-width:640px){.gallery{grid-template-columns:minmax(0,1fr)}.gallery .g-card:nth-of-type(5){grid-column:auto}.g-collage .g-img,.g-collage .g-img img{height:150px}.g-videos{justify-content:flex-start}.g-videos video{height:300px}}
+.mailwrap{position:relative;display:inline-block}
+.mailmenu{position:absolute;left:0;bottom:calc(100% + 8px);min-width:200px;display:none;flex-direction:column;padding:6px;border-radius:12px;background:var(--bg);border:1px solid var(--line);box-shadow:0 20px 50px -20px rgba(0,0,0,.3);z-index:30}
+.mailmenu.open{display:flex}
+.mailmenu a,.mailmenu button{display:block;text-align:left;padding:9px 12px;border-radius:8px;font:inherit;font-size:14px;color:var(--ink);text-decoration:none;background:none;border:0;cursor:pointer}
+.mailmenu a:hover,.mailmenu button:hover{background:var(--soft)}
+.btn.li svg{color:#0a66c2}
+:root[data-theme="dark"] .btn.li svg{color:#70b5f9}
+.explainer{margin:28px 0 10px}
+.explainer video{display:block;width:100%;aspect-ratio:16/9;border-radius:12px;background:#000;border:1px solid var(--line)}
+.explainer figcaption{font-size:14px;color:var(--muted);margin-top:10px;max-width:760px}
+.explainer figcaption b{color:var(--ink);font-weight:500}
+.hats{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.hat{position:relative;display:flex;flex-direction:column;gap:6px;min-height:170px;padding:16px;border:1px solid var(--line);border-radius:14px;text-decoration:none;color:var(--ink);background:var(--bg);overflow:hidden;transition:border-color .25s,transform .25s,background .25s}
+.hat:hover,.hat:focus-visible{border-color:var(--ink);transform:translateY(-3px)}
+.hat .hn{font:500 11px "Geist Mono",monospace;color:var(--muted)}
+.hat b{font-weight:500;font-size:16px;letter-spacing:-.01em}
+.hat .hp{font-size:13.5px;color:var(--muted);line-height:1.45}
+.hat .ha{margin-top:auto;font-size:12.5px;opacity:0;transform:translateY(4px);transition:all .25s}
+.hat:hover .ha,.hat:focus-visible .ha{opacity:1;transform:none}
+.hat.match{border-color:var(--ink);background:var(--soft)}
+@media (max-width:1000px){.hats{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:640px){.hats{grid-template-columns:repeat(2,minmax(0,1fr))}.hat{min-height:150px;padding:14px}.hat .ha{opacity:1;transform:none}}
+/* transitions */
+.curtain{position:fixed;inset:0;z-index:70;pointer-events:none;background:var(--ink);transform:translateY(100%);display:flex;align-items:center;justify-content:center}
+.curtain span{color:var(--bg);font:500 clamp(28px,5vw,56px)/1 Geist,sans-serif;letter-spacing:-.03em;opacity:0;transform:translateY(20px);transition:opacity .3s .1s,transform .45s .1s cubic-bezier(.2,.8,.2,1)}
+.curtain.in{transition:transform .5s cubic-bezier(.76,0,.24,1);transform:translateY(0)}
+.curtain.in span{opacity:1;transform:none}
+.curtain.out{transition:transform .55s cubic-bezier(.76,0,.24,1);transform:translateY(-100%)}
+.curtain.out span{opacity:0;transition-delay:0s}
+::view-transition-old(root),::view-transition-new(root){animation:none;mix-blend-mode:normal}
+.case{view-transition-name:var(--vt)}
+::view-transition-group(*){animation-duration:.5s;animation-timing-function:cubic-bezier(.2,.8,.2,1)}
+@media (max-width:900px){
+  .hero{grid-template-columns:1fr;gap:40px}
+  .flow{grid-template-columns:1fr;gap:32px}
+  .bento{grid-template-columns:1fr 1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .skills{grid-template-columns:1fr 1fr}
+  .colophon{grid-template-columns:1fr;gap:20px}
+}
+@media (max-width:640px){
+  header{padding:48px 0 24px}
+  .links{display:none}
+  .iconbtn .lbl{display:none}
+  .grid2,.skills,.tasks,.lots,.steps{grid-template-columns:1fr}
+  .qrow{grid-template-columns:1fr}
   .role{grid-template-columns:1fr;gap:4px}
-  nav .links{gap:14px;font-size:13px}
-  nav .links a[href="#approach"],nav .links a[href="#experience"]{display:none}
-  table{font-size:13px}
+  .tile .big{font-size:36px}
+  section{padding:72px 0}
+  .case{padding:44px 0}
+  .unlock{left:12px;right:12px;transform:translateY(-140%)}.unlock.show{transform:none}
+  .toast{max-width:calc(100vw - 32px);text-align:center}
+  .hud{right:12px;bottom:12px}.hud .meta{min-width:80px}.drawer{right:12px;bottom:62px}
+  .dg figcaption::before{content:"Swipe to see the full diagram. "}
 }
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.case{transition:none}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  h1 .line span{transform:none}
+  .rv{opacity:1;transform:none}
+}
 @media print{
-  nav,.cta,.theme,.skip{display:none}
-  body{background:#fff;color:#000}
+  nav,.cta,.picker,.pal,.toast,.marquee,.skip,.graph .ticker,.hud,.drawer,.unlock,#confetti,.game{display:none!important}
+  .rv{opacity:1;transform:none}
   details summary{display:none}
-  .case,.role,.skill,.fact{break-inside:avoid}
-  section{padding:24px 0}
+  .case,.role,.skill,.tile{break-inside:avoid}
 }
+
+/* mobile layout */
+.hero>*,.flow>*{min-width:0}
+@media (max-width:900px){
+  .hero{gap:0}
+  .portrait{order:-1;justify-self:start;width:168px;margin:0 0 28px}
+  .p3d{margin-top:22px}
+  .p3d-tag{display:none}
+}
+@media (max-width:640px){
+  header{padding:28px 0 8px}
+  .portrait{width:148px;margin-bottom:22px}
+  .p3d-bg{border-radius:14px}
+  h1{font-size:32px;line-height:1.14;margin-bottom:18px}
+  .lede{font-size:16.5px}
+  .where{margin-bottom:26px}
+  .picker{margin-bottom:26px}
+  .chips{flex-wrap:nowrap;overflow-x:auto;margin:0 -20px;padding:2px 20px 6px;scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,transparent,#000 20px,#000 calc(100% - 28px),transparent);mask-image:linear-gradient(90deg,transparent,#000 20px,#000 calc(100% - 28px),transparent)}
+  .chips::-webkit-scrollbar{display:none}
+  .chip{flex:none}
+  .cta .btn{flex:1;justify-content:center}
+  #numbers{padding:8px 0 56px}
+  .tile{padding:20px 12px 0 0}
+  .toast{top:72px;bottom:auto;transform:translate(-50%,-16px)}
+  .toast.show{transform:translate(-50%,0)}
+  .unlock{top:120px}
+  h2{font-size:28px}
+  .case h3{font-size:24px}
+  .game{padding:18px;margin-left:-4px;margin-right:-4px}
+  .shot{padding-bottom:22px}
+  .cap{left:8px;bottom:32px;max-width:66%;padding:7px 10px}
+  .cap small{display:none}
+  footer{padding:80px 0 110px}
+  .hud{padding:4px;gap:0}.hud .meta{display:none}.hud .lv{width:34px;height:34px}
+  .drawer{bottom:60px}
+  .graph text{font-size:17px}.graph .t{font-size:18px}
+}
+@media (max-width:640px) and (prefers-reduced-motion:no-preference){
+  .p3d{animation:sway 7s ease-in-out infinite}
+}
+
+/* ---------- Mikee Bot ---------- */
+.botdot{width:8px;height:8px;border-radius:50%;background:var(--ok);display:inline-block;box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 50%,transparent);animation:bping 2.2s infinite}
+@keyframes bping{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--ok) 55%,transparent)}100%{box-shadow:0 0 0 9px transparent}}
+.botfab{position:fixed;right:20px;bottom:20px;z-index:35;display:flex;align-items:center;gap:10px;padding:6px 16px 6px 6px;border-radius:999px;border:1px solid color-mix(in srgb,var(--ink) 10%,transparent);background:color-mix(in srgb,var(--bg) 70%,transparent);-webkit-backdrop-filter:blur(16px) saturate(1.6);backdrop-filter:blur(16px) saturate(1.6);box-shadow:0 12px 40px -14px rgba(0,0,0,.3);color:var(--ink);font:500 14px Geist,sans-serif;cursor:pointer;transition:transform .2s,opacity .2s}
+.botfab:hover{transform:translateY(-2px)}
+.botfab.hide{opacity:0;pointer-events:none;transform:translateY(10px)}
+.botav{width:34px;height:34px;border-radius:50%;overflow:hidden;flex:none;position:relative;background:var(--soft)}
+.botav img{width:100%;height:100%;object-fit:cover;object-position:center 25%}
+.botav::after{content:"";position:absolute;right:1px;bottom:1px;width:9px;height:9px;border-radius:50%;background:var(--ok);border:2px solid var(--bg)}
+.botteaser{position:fixed;right:20px;bottom:76px;z-index:35;max-width:260px;padding:12px 14px;border-radius:14px 14px 4px 14px;background:var(--bg);border:1px solid var(--line);box-shadow:0 18px 50px -20px rgba(0,0,0,.3);font-size:14px;opacity:0;transform:translateY(8px);pointer-events:none;transition:all .4s cubic-bezier(.2,.8,.2,1)}
+.botteaser.show{opacity:1;transform:none;pointer-events:auto;cursor:pointer}
+.botteaser b{font-weight:500}
+.bot{position:fixed;right:20px;bottom:20px;z-index:60;width:min(400px,calc(100vw - 40px));height:min(620px,calc(100vh - 100px));display:flex;flex-direction:column;border-radius:20px;overflow:hidden;background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:blur(24px) saturate(1.6);backdrop-filter:blur(24px) saturate(1.6);border:1px solid color-mix(in srgb,var(--ink) 10%,transparent);box-shadow:0 40px 100px -30px rgba(0,0,0,.45);transform-origin:bottom right;transform:scale(.92) translateY(12px);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.2,.8,.2,1),opacity .25s}
+.bot.open{transform:none;opacity:1;pointer-events:auto}
+.bot-h{display:flex;align-items:center;gap:10px;padding:12px 12px 12px 14px;border-bottom:1px solid var(--line)}
+.bot-h .who{flex:1;min-width:0}
+.bot-h b{display:block;font-weight:500;font-size:15px}
+.bot-h small{display:block;color:var(--muted);font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bot-h button{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--muted);cursor:pointer;display:grid;place-items:center;flex:none}
+.bot-h button:hover{color:var(--ink);border-color:var(--ink)}
+.bot-h button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.bot-log{flex:1;overflow-y:auto;padding:16px 14px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth;overscroll-behavior:contain}
+.msg{max-width:86%;padding:10px 13px;border-radius:16px;font-size:14.5px;line-height:1.5;animation:msgin .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes msgin{from{opacity:0;transform:translateY(6px)}}
+.msg.b{align-self:flex-start;background:var(--soft);border-bottom-left-radius:5px}
+.msg.u{align-self:flex-end;background:var(--ink);color:var(--bg);border-bottom-right-radius:5px}
+.msg a{color:inherit}
+.msg .acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.msg .acts button,.msg .acts a{font:500 12.5px Geist,sans-serif;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:5px 11px;cursor:pointer;text-decoration:none}
+.msg .acts button:hover,.msg .acts a:hover{border-color:var(--ink)}
+.typing{align-self:flex-start;background:var(--soft);border-radius:16px;padding:12px 14px;display:flex;gap:4px}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);animation:tdot 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes tdot{50%{opacity:.25;transform:translateY(-2px)}}
+.bot-chips{display:flex;gap:6px;padding:0 14px 10px;overflow-x:auto;scrollbar-width:none;flex:none}
+.bot-chips::-webkit-scrollbar{display:none}
+.bot-chips button{flex:none;font:500 13px Geist,sans-serif;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:7px 12px;cursor:pointer}
+.bot-chips button:hover{border-color:var(--ink)}
+.bot-in{display:flex;gap:8px;align-items:center;padding:10px 12px calc(10px + env(safe-area-inset-bottom));border-top:1px solid var(--line)}
+.bot-in input{flex:1;min-width:0;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:10px 14px;font:inherit;font-size:16px;outline:none}
+.bot-in input:focus{border-color:var(--ink)}
+.bot-in button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;display:grid;place-items:center;flex:none}
+.bot-in button[type="submit"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.bot-in .mic.on{background:#e5484d;border-color:#e5484d;color:#fff;animation:micpulse 1.2s infinite}
+@keyframes micpulse{50%{box-shadow:0 0 0 6px color-mix(in srgb,#e5484d 25%,transparent)}}
+.bot-in .mic[hidden]{display:none}
+.bot-note{font-size:11px;color:var(--muted);text-align:center;padding:0 14px 8px;flex:none}
+.botcta{gap:8px}
+@media (max-width:640px){
+  .botfab{right:12px;bottom:12px;padding:5px 14px 5px 5px}
+  .botteaser{right:12px;bottom:68px}
+  .bot{inset:0;right:0;bottom:0;width:100%;height:100%;height:100dvh;border-radius:0;border:0;transform:translateY(100%);opacity:1}
+  .bot.open{transform:none}
+  .bot-h{padding-top:calc(12px + env(safe-area-inset-top))}
+  .msg{font-size:15.5px}
+}
+@media (prefers-reduced-motion:reduce){.bot,.msg,.botteaser{transition:none;animation:none}}
+@media print{.botfab,.bot,.botteaser{display:none!important}}
 </style>
 </head>
 <body>
 <a class="skip" href="#work">Skip to work</a>
 <nav aria-label="Main"><div class="wrap">
-  <a class="brand" href="#top">Mikee Gooden</a>
+  <a class="brand" href="#top"><span class="logo" aria-hidden="true">m</span>Mikee Gooden</a>
   <div class="right">
     <div class="links"><a href="#work">Work</a><a href="#approach">Approach</a><a href="#experience">Experience</a><a href="#contact">Contact</a></div>
-    <button class="theme" id="theme" type="button" aria-label="Dark theme" aria-pressed="false"><span aria-hidden="true">◐</span></button>
+    <a class="nav-cv" href="cv/Michael-Angelo-Gooden-CV.pdf" download data-cv>Download CV</a>
+    <button class="iconbtn" id="palbtn" type="button" aria-label="Open command menu"><span aria-hidden="true">⌘</span><span class="lbl">K</span></button>
+    <button class="iconbtn" id="theme" type="button" aria-label="Dark theme" aria-pressed="false"><span aria-hidden="true">◐</span></button>
   </div>
 </div></nav>
 
 <main>
 <header id="top"><div class="wrap">
-  <p class="eyebrow">Business systems · BI · AI-driven delivery</p>
-  <h1>I specify, build and roll out the systems a business runs on.</h1>
-  <p class="lede">I'm Michael Angelo (Mikee) Gooden. I lead business intelligence and systems for a multi-branch luxury retailer in the Philippines and Hong Kong: I run discovery, write the requirements and build the tools myself by directing AI coding agents. Before that, I spent three years at Shopee Philippines.</p>
-  <p class="where">Based in Manila · open to relocating in 2027</p>
-  <div class="cta">
-    <a class="btn primary" href="#work">See the work</a>
-    <a class="btn ghost" href="#contact">Get in touch</a>
+  <div class="hero">
+    <div>
+      
+      <h1><span class="line"><span>I used to reconcile the books.</span></span><span class="line"><span class="grad">Now I build the systems behind them.</span></span></h1>
+      <p class="lede" id="lede" aria-live="polite">I lead business intelligence and systems for a multi-branch luxury retailer in the Philippines and Hong Kong: I run discovery, write the requirements and build the tools myself by directing AI coding agents. Before that, three years at Shopee Philippines.</p>
+      <p class="where">Michael Angelo (Mikee) Gooden · Based in Manila</p>
+      <div class="picker">
+        <p id="pick-l">Hiring for a specific role? The page reorders to match.</p>
+        <div class="chips" role="group" aria-labelledby="pick-l">
+          <button class="chip" type="button" data-role="all" aria-pressed="true">Everything</button>
+          <button class="chip" type="button" data-role="bi" aria-pressed="false">BI &amp; data</button>
+          <button class="chip" type="button" data-role="systems" aria-pressed="false">Business systems</button>
+          <button class="chip" type="button" data-role="product" aria-pressed="false">Product &amp; delivery</button>
+          <button class="chip" type="button" data-role="ai" aria-pressed="false">AI &amp; automation</button>
+          <button class="chip" type="button" data-role="marketing" aria-pressed="false">Marketing &amp; content</button>
+        </div>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="#work">See the work ↓</a>
+        <a class="btn cvbtn" href="cv/Michael-Angelo-Gooden-CV.pdf" download data-cv>Download CV ↓</a>
+        <button class="btn botcta" type="button" data-openbot><span class="botdot"></span>Ask Mikee Bot</button>
+      </div>
+    </div>
+
+    <div class="portrait rv" id="portrait">
+      <div class="p3d" id="p3d">
+        <div class="p3d-bg" aria-hidden="true"></div>
+        <img class="p3d-sub" src="mikee-cut.png" width="700" height="700" alt="Portrait of Michael Angelo (Mikee) Gooden in a dark suit">
+        <div class="p3d-tag" aria-hidden="true"><span class="dot"></span>Mikee Gooden · Manila</div>
+      </div>
+    </div>
   </div>
-  <div class="facts">
-    <div class="fact"><b>10 years</b><span>across e-commerce, luxury retail, digital marketing and finance</span></div>
-    <div class="fact"><b>Sole builder</b><span>of these systems, working with operations, management and staff in two countries</span></div>
-    <div class="fact"><b>Requirements to rollout</b><span>discovery, specs, build, staff testing and go-live</span></div>
-    <div class="fact"><b>AI with guardrails</b><span>AI where it is reliable; people make the decisions</span></div>
-  </div>
+
+  <div class="marquee" aria-hidden="true"><div class="track" id="track">
+    <span>React</span><span>TypeScript</span><span>PostgreSQL</span><span>Next.js</span><span>Payload CMS</span><span>Frappe / ERPNext</span><span>Python</span><span>Claude Code</span><span>Claude API</span><span>MCP servers</span><span>Looker Studio</span><span>Google Apps Script</span><span>Shopify</span><span>GA4</span><span>Jira</span>
+  </div></div>
 </div></header>
 
+<section id="numbers" class="rvs"><div class="wrap">
+  <div class="bento">
+    <div class="tile spot rv"><div class="big"><span class="count" data-to="10">10</span></div><div class="lbl">years across e-commerce, luxury retail, digital marketing and finance</div></div>
+    <div class="tile spot rv"><div class="big grad"><span class="count" data-to="6">6</span></div><div class="lbl">business systems built in 2026 by directing AI coding agents</div></div>
+    <div class="tile spot rv"><div class="big"><span class="count" data-to="2">2</span></div><div class="lbl">countries, with teams in the Philippines and Hong Kong</div></div>
+    <div class="tile spot rv"><div class="big">~10<small style="font-size:18px"> wks</small></div><div class="lbl">from start of build to a live operations system</div></div>
+  </div>
+</div></section>
+
+<section id="hats"><div class="wrap">
+  <p class="kicker">Range</p>
+  <h2>One person, many hats.</h2>
+  <p class="sub">At a lean, multi-branch business I cover roles that usually sit in different teams. Each hat below links to the work that proves it.</p>
+  <div class="hats">
+      <a class="hat rv" href="#case-01" data-roles="systems product"><span class="hn">01</span><b>Business analyst</b><span class="hp">Discovery sessions, requirements, acceptance and pass/fail criteria, staff testing.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#case-02" data-roles="bi"><span class="hn">02</span><b>BI lead</b><span class="hp">KPIs defined with management; dashboards for gross profit, close rate and inventory ageing; a pricing data pipeline.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#case-04" data-roles="ai product systems"><span class="hn">03</span><b>Product owner &amp; builder</b><span class="hp">Six systems built in 2026 by directing AI coding agents, from spec to go-live.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#case-03" data-roles="product marketing"><span class="hn">04</span><b>Web developer</b><span class="hp">A catalogue, Grail Exchange and a Shopify store, all built on my own.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#marketing" data-roles="marketing"><span class="hn">05</span><b>Marketer</b><span class="hp">Shopee mega sales, paid search, SEO and Mailchimp email campaigns.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#marketing" data-roles="marketing"><span class="hn">06</span><b>Designer</b><span class="hp">Landing pages, brand guidelines, social posts and in-app banners.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#case-03" data-roles="marketing ai"><span class="hn">07</span><b>Video producer</b><span class="hp">The Grail Exchange explainer: AI voice-over, licensed stock and scripted editing.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#marketing" data-roles="marketing"><span class="hn">08</span><b>Photographer</b><span class="hp">In-house luxury watch photography, trained by professional watch photographers in Hong Kong.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#approach" data-roles="systems product"><span class="hn">09</span><b>Trainer</b><span class="hp">Onboarding guides at Shopee; staff testing, training and guides for system rollouts.</span><span class="ha">See it →</span></a>
+      <a class="hat rv" href="#experience" data-roles="bi systems"><span class="hn">10</span><b>Finance mind</b><span class="hp">Three years in accounting: reconciliations and month-end close, now built into finance exports.</span><span class="ha">See it →</span></a>
+  </div>
+</div></section>
+
+<section id="flow"><div class="wrap">
+  <div class="flow">
+    <div class="rv">
+      <p class="kicker">The idea behind the work</p>
+      <h2>One record. Everything else follows.</h2>
+      <p class="sub">Most of my work comes back to the same pattern: get every channel feeding one trustworthy record, then let pricing, stock, sales and finance read from it instead of retyping it.</p>
+    </div>
+    <div class="graph rv" aria-label="Animated illustration of client inquiries flowing into one record that drives pricing, stock, sales and finance">
+      <div class="bar"><span>operations_graph.svg</span><span>illustration</span></div>
+      <svg viewBox="0 0 520 400" role="img" aria-label="Inquiries from walk-ins, web forms, social media and WhatsApp flow into one record, which drives pricing, stock, sales and finance.">
+        <g id="edges">
+          <path id="e1" d="M118,60 C190,60 190,200 222,200" class="ln"/>
+          <path id="e2" d="M118,150 C190,150 190,200 222,200" class="ln"/>
+          <path id="e3" d="M118,250 C190,250 190,200 222,200" class="ln"/>
+          <path id="e4" d="M118,340 C190,340 190,200 222,200" class="ln"/>
+          <path id="f1" d="M298,200 C330,200 330,60 402,60" class="ln"/>
+          <path id="f2" d="M298,200 C330,200 330,150 402,150" class="ln"/>
+          <path id="f3" d="M298,200 C330,200 330,250 402,250" class="ln"/>
+          <path id="f4" d="M298,200 C330,200 330,340 402,340" class="ln"/>
+        </g>
+        <g>
+          <rect x="10" y="40" width="108" height="40" rx="10" class="node"/><text x="64" y="65" text-anchor="middle">Walk-ins</text>
+          <rect x="10" y="130" width="108" height="40" rx="10" class="node"/><text x="64" y="155" text-anchor="middle">Web forms</text>
+          <rect x="10" y="230" width="108" height="40" rx="10" class="node"/><text x="64" y="255" text-anchor="middle">Social</text>
+          <rect x="10" y="320" width="108" height="40" rx="10" class="node"/><text x="64" y="345" text-anchor="middle">WhatsApp</text>
+          <rect x="402" y="40" width="108" height="40" rx="10" class="node"/><text x="456" y="65" text-anchor="middle">Pricing</text>
+          <rect x="402" y="130" width="108" height="40" rx="10" class="node"/><text x="456" y="155" text-anchor="middle">Stock</text>
+          <rect x="402" y="230" width="108" height="40" rx="10" class="node"/><text x="456" y="255" text-anchor="middle">Sales</text>
+          <rect x="402" y="320" width="108" height="40" rx="10" class="node"/><text x="456" y="345" text-anchor="middle">Finance</text>
+          <g class="core"><rect x="222" y="150" width="76" height="100" rx="16" class="acc"/>
+          <text x="260" y="192" text-anchor="middle" class="t">One</text><text x="260" y="218" text-anchor="middle" class="t">record</text></g>
+        </g>
+        <g>
+          <circle r="4" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0s"><mpath href="#e1"/></animateMotion></circle>
+          <circle r="4" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0.8s"><mpath href="#e2"/></animateMotion></circle>
+          <circle r="4" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" begin="1.6s"><mpath href="#e3"/></animateMotion></circle>
+          <circle r="4" class="pulse"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2.4s"><mpath href="#e4"/></animateMotion></circle>
+          <circle r="4" class="pulse2"><animateMotion dur="3.2s" repeatCount="indefinite" begin="0.4s"><mpath href="#f1"/></animateMotion></circle>
+          <circle r="4" class="pulse2"><animateMotion dur="3.2s" repeatCount="indefinite" begin="1.2s"><mpath href="#f2"/></animateMotion></circle>
+          <circle r="4" class="pulse2"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2s"><mpath href="#f3"/></animateMotion></circle>
+          <circle r="4" class="pulse2"><animateMotion dur="3.2s" repeatCount="indefinite" begin="2.8s"><mpath href="#f4"/></animateMotion></circle>
+        </g>
+      </svg>
+      <div class="ticker" aria-hidden="true"><b>›</b><span id="tick">inquiry received → client record updated</span></div>
+    </div>
+  </div>
+</div></section>
+
 <section id="work"><div class="wrap">
+  
   <h2>Selected work</h2>
-  <p class="sub">Employer, client and system names are withheld for confidentiality, and no screenshots, data or code are shown. Each case describes work I did myself, and I don't quote numbers that weren't measured.</p>
+  <p class="sub">Internal systems are shown only as illustrations with made-up data; no internal screenshots, client details or code. Screenshots are of public websites. Each case describes work I did myself, and I don't quote numbers that weren't measured.</p>
 
-  <div class="cases">
+  <div class="cases" id="cases">
 
-  <article class="case">
-    <div class="num">CASE 01</div>
+  <article class="case spot rv" id="case-01" style="--vt:case1" data-roles="systems product">
+    <div class="top"><span class="num">CASE 01 · ERP &amp; CRM</span><span class="badge">Relevant</span></div>
     <h3>ERP and CRM for a multi-branch luxury watch retailer</h3>
     <p>Inventory, consignments, pricing and sales were spread across spreadsheets, scripts, shared drives and messaging apps. Records for the same item didn't always match, and client inquiries arrived through walk-ins, web forms, social media and WhatsApp with no single client record. I ran discovery with operations and management, wrote the requirements, and built the systems that are consolidating it onto one platform.</p>
     <p class="result">Manila system live about ten weeks after the build started. The Hong Kong platform passed every required criterion and was adopted by staff.</p>
+    <figure class="dg">
+      <div class="seg" role="group" aria-label="Show before or after">
+        <button type="button" data-state="before" aria-pressed="false">Before</button>
+        <button type="button" data-state="after" aria-pressed="true">After</button>
+      </div>
+      <div class="scroll">
+      <svg viewBox="0 0 900 260" role="img" aria-label="Before: one watch appears in four places with conflicting details. After: one record holds the item, its inclusions and condition, and generates documents and reports.">
+        <defs><marker id="m1a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="mka"/></marker></defs>
+        <g class="state off" data-s="before">
+          <rect x="10" y="20" width="200" height="100" rx="12" class="b"/><text x="26" y="46" class="h">SPREADSHEET</text><text x="26" y="72">Item A-112</text><text x="26" y="94" class="s">Year</text><text x="190" y="94" text-anchor="end" class="bad">2019</text>
+          <rect x="230" y="60" width="200" height="100" rx="12" class="b"/><text x="246" y="86" class="h">SCRIPT OUTPUT</text><text x="246" y="112">Item A-112</text><text x="246" y="134" class="s">Year</text><text x="410" y="134" text-anchor="end" class="bad">2021</text>
+          <rect x="450" y="20" width="200" height="100" rx="12" class="b"/><text x="466" y="46" class="h">SHARED DRIVE</text><text x="466" y="72">Item A-112</text><text x="466" y="94" class="s">Set</text><text x="630" y="94" text-anchor="end" class="bad">incomplete?</text>
+          <rect x="670" y="60" width="200" height="100" rx="12" class="b"/><text x="686" y="86" class="h">GROUP CHAT</text><text x="686" y="112">"is A-112 sold?"</text><text x="686" y="134" class="s">Condition</text><text x="850" y="134" text-anchor="end" class="bad">no record</text>
+          <text x="450" y="214" text-anchor="middle" class="s">Same item, four versions. A wrong year reached a contract; a complete set looked incomplete to a client.</text>
+        </g>
+        <g class="state" data-s="after">
+          <rect x="300" y="14" width="300" height="200" rx="16" class="acc"/>
+          <text x="320" y="42" class="h">ONE RECORD</text><text x="320" y="70" class="t">Item A-112</text>
+          <text x="320" y="96" class="s">Year</text><text x="580" y="96" text-anchor="end">2021</text>
+          <text x="320" y="120" class="s">Inclusions</text><text x="580" y="120" text-anchor="end">each listed</text>
+          <text x="320" y="144" class="s">Condition</text><text x="580" y="144" text-anchor="end">recorded</text>
+          <text x="320" y="168" class="s">Price decision</text><text x="580" y="168" text-anchor="end">with reason</text>
+          <text x="320" y="192" class="s">Access</text><text x="580" y="192" text-anchor="end">by role</text>
+          <path d="M600,60 C660,60 660,40 716,40" class="lna" marker-end="url(#m1a)"/><rect x="720" y="22" width="160" height="36" rx="10" class="b"/><text x="800" y="45" text-anchor="middle">Contracts</text>
+          <path d="M600,100 C660,100 660,95 716,95" class="lna" marker-end="url(#m1a)"/><rect x="720" y="77" width="160" height="36" rx="10" class="b"/><text x="800" y="100" text-anchor="middle">Daily stock count</text>
+          <path d="M600,140 C660,140 660,150 716,150" class="lna" marker-end="url(#m1a)"/><rect x="720" y="132" width="160" height="36" rx="10" class="b"/><text x="800" y="155" text-anchor="middle">Sales statements</text>
+          <path d="M600,180 C660,180 660,205 716,205" class="lna" marker-end="url(#m1a)"/><rect x="720" y="187" width="160" height="36" rx="10" class="b"/><text x="800" y="210" text-anchor="middle">Finance export</text>
+          <rect x="20" y="40" width="160" height="36" rx="10" class="b"/><text x="100" y="63" text-anchor="middle">Receiving</text>
+          <rect x="20" y="96" width="160" height="36" rx="10" class="b"/><text x="100" y="119" text-anchor="middle">Condition check</text>
+          <rect x="20" y="152" width="160" height="36" rx="10" class="b"/><text x="100" y="175" text-anchor="middle">Pricing review</text>
+          <path d="M180,58 C240,58 240,90 296,90" class="lna" marker-end="url(#m1a)"/>
+          <path d="M180,114 C240,114 240,114 296,114" class="lna" marker-end="url(#m1a)"/>
+          <path d="M180,170 C240,170 240,140 296,140" class="lna" marker-end="url(#m1a)"/>
+          <text x="450" y="244" text-anchor="middle" class="s">Documents are generated from the record, never retyped.</text>
+        </g>
+      </svg>
+      </div>
+      <figcaption>Illustrative example (not real data), based on real incidents that shaped the requirements.</figcaption>
+    </figure>
+    <figure class="dg">
+      <div class="scroll">
+      <svg viewBox="0 0 900 360" role="img" aria-label="Illustration of the multi-branch operations platform: branches and locations held as settings, access by role, and every change kept in an audit log.">
+        <rect x="1" y="1" width="898" height="358" rx="12" class="b"/>
+        <rect x="1" y="1" width="190" height="358" rx="12" class="tg"/>
+        <text x="22" y="38" class="t">Operations</text>
+        <text x="22" y="76" class="s">Inventory</text><text x="22" y="104" class="s">Receiving</text><text x="22" y="132" class="s">Clients</text>
+        <rect x="12" y="148" width="166" height="30" rx="8" class="b"/><text x="22" y="168" class="t" style="font-size:13px">Locations</text>
+        <text x="22" y="204" class="s">Access &amp; roles</text><text x="22" y="232" class="s">Audit log</text>
+        <text x="22" y="336" class="h">EXAMPLE DATA</text>
+        <text x="216" y="40" class="t" style="font-size:18px">Locations</text>
+        <rect x="770" y="20" width="108" height="30" rx="15" class="btnf"/><text x="824" y="40" text-anchor="middle" class="bt">+ Add branch</text>
+        <text x="216" y="80" class="h">BRANCH</text><text x="400" y="80" class="h">AREAS</text><text x="560" y="80" class="h">STAFF ACCESS</text><text x="740" y="80" class="h">STATUS</text>
+        <line x1="216" y1="90" x2="878" y2="90" class="ln"/>
+        <text x="216" y="118">Branch A</text><text x="400" y="118" class="s">Showroom, Safe, Desk</text><text x="560" y="118" class="s">Own clients only</text><rect x="740" y="104" width="56" height="20" rx="10" class="tg"/><text x="768" y="118" text-anchor="middle" class="s">Active</text>
+        <line x1="216" y1="134" x2="878" y2="134" class="ln"/>
+        <text x="216" y="162">Branch B</text><text x="400" y="162" class="s">Intake, Storage</text><text x="560" y="162" class="s">Own clients only</text><rect x="740" y="148" width="56" height="20" rx="10" class="tg"/><text x="768" y="162" text-anchor="middle" class="s">Active</text>
+        <line x1="216" y1="178" x2="878" y2="178" class="ln"/>
+        <text x="216" y="206">Branch C</text><text x="400" y="206" class="s">Desk</text><text x="560" y="206" class="s">Managers</text><rect x="740" y="192" width="56" height="20" rx="10" class="tg"/><text x="768" y="206" text-anchor="middle" class="s">Setup</text>
+        <rect x="216" y="236" width="662" height="104" rx="10" class="tg"/>
+        <text x="232" y="262" class="h">AUDIT LOG</text>
+        <text x="232" y="288" class="s">10:42  Item A-112 · hold placed · reason recorded</text>
+        <text x="232" y="310" class="s">10:15  Branch C · area "Desk" added</text>
+        <text x="232" y="332" class="s">09:58  Price decision · set · approved by manager</text>
+      </svg>
+      </div>
+      <figcaption>Illustration with made-up data, not a screenshot: branches as settings rather than code, access by role, and every change kept in history.</figcaption>
+    </figure>
     <ul class="tags"><li>Requirements &amp; acceptance criteria</li><li>Data model</li><li>Role-based access</li><li>Build vs. buy</li><li>React · Express · PostgreSQL</li><li>Frappe/ERPNext</li></ul>
     <details>
       <summary>Read the case study</summary>
@@ -189,11 +697,37 @@ footer p{color:var(--muted);font-size:14px}
     </details>
   </article>
 
-  <article class="case">
-    <div class="num">CASE 02</div>
-    <h3>AI-assisted market pricing intelligence</h3>
+  <article class="case spot rv" id="case-02" style="--vt:case2" data-roles="bi ai systems">
+    <div class="top"><span class="num">CASE 02 · PRICING INTELLIGENCE</span><span class="badge">Relevant</span></div>
+    <h3>AI-assisted market pricing, where AI is never the price source</h3>
     <p>Before pricing an item, a reviewer searched competitor listings by hand and shared a range in a group chat. Dealer prices, auction results and social listings were mixed together, and AI chat answers were sometimes used as a price source. I built a tool where AI collects the facts, formulas do the maths and a person makes the call.</p>
     <p class="result">In regular use by the pricing reviewer, client advisors and management. Every price traces back to a real listing.</p>
+    <figure class="dg">
+      <div class="scroll">
+      <svg viewBox="0 0 900 200" role="img" aria-label="Pricing pipeline: real listings, AI reads facts with the source link, rules per source normalise and validate, formulas apply tiers, currency and costs, a person approves, and every run is saved as history.">
+        <defs><marker id="m2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="mk"/></marker></defs>
+        <path d="M157,52 V42 H275 V52" class="ln dash"/>
+        <text x="216" y="32" text-anchor="middle" class="s">reads only, never prices</text>
+        <path d="M469,52 V42 H743 V52" class="lna"/>
+        <text x="606" y="32" text-anchor="middle" class="at">numbers and decisions</text>
+        <path id="pp" d="M60,107 H840" fill="none"/>
+        <rect x="1" y="62" width="118" height="90" rx="12" class="b"/><text x="60" y="102" text-anchor="middle" class="t">Real listings</text><text x="60" y="122" text-anchor="middle" class="s">dealers, auctions</text>
+        <rect x="157" y="62" width="118" height="90" rx="12" class="b ai"/><text x="216" y="102" text-anchor="middle" class="t">AI reads</text><text x="216" y="122" text-anchor="middle" class="s">facts + source link</text>
+        <rect x="313" y="62" width="118" height="90" rx="12" class="b"/><text x="372" y="102" text-anchor="middle" class="t">Source rules</text><text x="372" y="122" text-anchor="middle" class="s">normalise, validate</text>
+        <rect x="469" y="62" width="118" height="90" rx="12" class="acc"/><text x="528" y="102" text-anchor="middle" class="t">Formulas</text><text x="528" y="122" text-anchor="middle" class="s">tiers, FX, costs</text>
+        <rect x="625" y="62" width="118" height="90" rx="12" class="acc"/><text x="684" y="102" text-anchor="middle" class="t">Person</text><text x="684" y="122" text-anchor="middle" class="s">approve or escalate</text>
+        <rect x="781" y="62" width="118" height="90" rx="12" class="b"/><text x="840" y="102" text-anchor="middle" class="t">History</text><text x="840" y="122" text-anchor="middle" class="s">every run saved</text>
+        <line x1="121" y1="107" x2="155" y2="107" class="ln" marker-end="url(#m2)"/>
+        <line x1="277" y1="107" x2="311" y2="107" class="ln" marker-end="url(#m2)"/>
+        <line x1="433" y1="107" x2="467" y2="107" class="ln" marker-end="url(#m2)"/>
+        <line x1="589" y1="107" x2="623" y2="107" class="ln" marker-end="url(#m2)"/>
+        <line x1="745" y1="107" x2="779" y2="107" class="ln" marker-end="url(#m2)"/>
+        <g><circle r="5" class="pulse"><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#pp"/></animateMotion></circle></g>
+        <text x="450" y="186" text-anchor="middle" class="s">Dashed = AI step. A comparable without a link never reaches a price range.</text>
+      </svg>
+      </div>
+      <figcaption>AI collects the evidence, formulas do the maths, and a person makes the call.</figcaption>
+    </figure>
     <ul class="tags"><li>Data pipeline</li><li>Validation rules</li><li>Google Sheets models</li><li>Python</li><li>Claude API</li><li>MCP server · OAuth</li></ul>
     <details>
       <summary>Read the case study</summary>
@@ -231,11 +765,33 @@ footer p{color:var(--muted);font-size:14px}
     </details>
   </article>
 
-  <article class="case">
-    <div class="num">CASE 03</div>
-    <h3>Web platforms: catalogue, services platform and a client store</h3>
-    <p>Customer-facing sites I built on my own and connected to operations.</p>
-    <p class="result">Three sites live; a fourth built and awaiting launch.</p>
+  <article class="case spot rv" id="case-03" style="--vt:case3" data-roles="product systems marketing">
+    <div class="top"><span class="num">CASE 03 · WEB PLATFORMS</span><span class="badge">Relevant</span></div>
+    <h3>A catalogue, Grail Exchange and Wellness Whispers</h3>
+    <p>Customer-facing sites I built on my own, from design and content to client accounts and admin.</p>
+    <p class="result">Three sites live, shown below; a fourth built and awaiting launch.</p>
+    <div class="shots">
+      <a class="shot wide" href="https://catalogue.vintagegrail.com" target="_blank" rel="noopener">
+        <div class="win"><div class="winbar"><i></i><i></i><i></i><span>catalogue.vintagegrail.com</span></div><img src="img/catalogue.jpg" width="1440" height="900" loading="lazy" alt="Vintage Grail monthly collection catalogue: The Art of Giving, November 2026"></div>
+        <img class="phone" src="img/catalogue-m.jpg" width="390" height="844" loading="lazy" alt="The catalogue on a phone">
+        <span class="cap glass"><b>Monthly collection catalogue ↗</b><small>Vintage Grail · React, TypeScript, PostgreSQL · lead capture and admin</small></span>
+      </a>
+      <a class="shot" href="https://grailexchange.com" target="_blank" rel="noopener">
+        <div class="win"><div class="winbar"><i></i><i></i><i></i><span>grailexchange.com</span></div><img src="img/grailexchange.jpg" width="1440" height="900" loading="lazy" alt="Grail Exchange home page: Your watch desk in Hong Kong"></div>
+        <img class="phone" src="img/grailexchange-m.jpg" width="390" height="844" loading="lazy" alt="Grail Exchange on a phone">
+        <span class="cap glass"><b>Grail Exchange ↗</b><small>Hong Kong watch services · Next.js, Payload CMS</small></span>
+      </a>
+      <a class="shot" href="https://wellnesswhispersph.com" target="_blank" rel="noopener">
+        <div class="win"><div class="winbar"><i></i><i></i><i></i><span>wellnesswhispersph.com</span></div><img src="img/wellnesswhispers.jpg" width="1440" height="900" loading="lazy" alt="Wellness Whispers online store home page"></div>
+        <img class="phone" src="img/wellnesswhispers-m.jpg" width="390" height="844" loading="lazy" alt="Wellness Whispers on a phone">
+        <span class="cap glass"><b>Wellness Whispers ↗</b><small>Freelance Shopify store · blend-matching quiz</small></span>
+      </a>
+    </div>
+    <figure class="explainer">
+      <video src="img/grailexchange-explainer.mp4" poster="img/grailexchange-explainer.jpg" controls playsinline preload="none" aria-label="Grail Exchange explainer video, 88 seconds"></video>
+      <figcaption><b>Grail Exchange explainer (1:28).</b> I produced it: an AI voice-over cloned from the presenter's voice with his consent (ElevenLabs), licensed stock footage with sources recorded, my own watch photography with serial numbers blurred, and editing driven by a Python script with ffmpeg.</figcaption>
+    </figure>
+    <p class="note">Screenshots of the live sites, taken 16 November 2026. Business figures shown on them belong to the clients.</p>
     <ul class="tags"><li>Next.js · Payload CMS</li><li>React · TypeScript · Vite</li><li>PostgreSQL</li><li>Shopify</li><li>Vercel</li></ul>
     <details>
       <summary>Read the case study</summary>
@@ -243,20 +799,46 @@ footer p{color:var(--muted);font-size:14px}
         <caption>Projects</caption>
         <thead><tr><th scope="col">Project</th><th scope="col">What it does</th><th scope="col">Status</th></tr></thead>
         <tbody>
-        <tr><td>Product catalogue</td><td>Curated collections with search and filters; prices shown after registration, which captures leads; WhatsApp and email inquiries; an admin for collections, brands and listings, with spreadsheet sync and PDF generation</td><td>Live</td></tr>
-        <tr><td>Services platform for dealers and collectors</td><td>Client accounts to submit service requests and announce incoming parcels; WhatsApp contact; services and process pages</td><td>Live</td></tr>
+        <tr><td><a href="https://catalogue.vintagegrail.com" target="_blank" rel="noopener">Monthly collection catalogue</a></td><td>Curated collections with search and filters; prices shown after registration, which captures leads; WhatsApp and email inquiries; an admin for collections, brands and listings, with spreadsheet sync and PDF generation</td><td>Live</td></tr>
+        <tr><td><a href="https://grailexchange.com" target="_blank" rel="noopener">Grail Exchange</a></td><td>Hong Kong watch services for dealers and collectors: client accounts to submit service requests and announce incoming parcels; WhatsApp contact; services and process pages. Next.js, Payload CMS, PostgreSQL, Vercel.</td><td>Live</td></tr>
         <tr><td>Retail website rebuild</td><td>Catalogue with inquiry buttons, CMS-managed content, article migration and inventory sync from the operations system</td><td>Built; launch pending</td></tr>
-        <tr><td>Wellness drinks brand (freelance)</td><td>Shopify store with a product catalogue by need and a blend-matching quiz</td><td>Live</td></tr>
+        <tr><td><a href="https://wellnesswhispersph.com" target="_blank" rel="noopener">Wellness Whispers</a> (freelance)</td><td>Shopify store for a Philippine wellness drinks brand: catalogue by need, blend-matching quiz, merchandise line</td><td>Live</td></tr>
         </tbody>
       </table></div>
     </details>
   </article>
 
-  <article class="case">
-    <div class="num">CASE 04</div>
-    <h3>AI-driven delivery: six systems, one builder</h3>
+  <article class="case spot rv" id="case-04" style="--vt:case4" data-roles="ai product">
+    <div class="top"><span class="num">CASE 04 · AI-DRIVEN DELIVERY</span><span class="badge">Relevant</span></div>
+    <h3>Six systems, one builder, AI agents with guardrails</h3>
     <p>In 2026 I designed and built business systems on my own by directing AI coding agents (Claude Code, Codex, Replit Agent), while keeping the requirements, data rules, testing and decisions in my own hands. I also put AI inside the products where it is reliable, with guardrails where it is not.</p>
     <p class="result">Six systems built in 2026: five in use and one awaiting launch, each starting from a written spec.</p>
+    <figure class="dg">
+      <div class="scroll">
+      <svg viewBox="0 0 900 262" role="img" aria-label="Delivery loop: I write the spec, review tests and approve go-live; an AI agent builds against the spec; automated tests and staff acceptance follow, with fixes going back to the agent before anything goes live.">
+        <defs><marker id="m4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="mk"/></marker>
+        <marker id="m4a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="mka"/></marker></defs>
+        <rect x="1" y="6" width="898" height="50" rx="14" class="acc"/>
+        <text x="450" y="37" text-anchor="middle" class="t">Me: requirements · data rules · review · go-live decision</text>
+        <line x1="76" y1="58" x2="76" y2="146" class="lna" marker-end="url(#m4a)"/><text x="84" y="106" class="at">writes</text>
+        <line x1="450" y1="58" x2="450" y2="146" class="lna" marker-end="url(#m4a)"/><text x="458" y="106" class="at">reviews</text>
+        <line x1="824" y1="58" x2="824" y2="146" class="lna" marker-end="url(#m4a)"/><text x="832" y="106" class="at">approves</text>
+        <rect x="1" y="150" width="150" height="56" rx="12" class="b"/><text x="76" y="174" text-anchor="middle" class="t">Written spec</text><text x="76" y="194" text-anchor="middle" class="s">acceptance criteria</text>
+        <rect x="188" y="150" width="150" height="56" rx="12" class="b ai"/><text x="263" y="174" text-anchor="middle" class="t">AI agent builds</text><text x="263" y="194" text-anchor="middle" class="s">Claude Code, Codex</text>
+        <rect x="375" y="150" width="150" height="56" rx="12" class="b"/><text x="450" y="174" text-anchor="middle" class="t">Automated tests</text><text x="450" y="194" text-anchor="middle" class="s">in most projects</text>
+        <rect x="562" y="150" width="150" height="56" rx="12" class="b"/><text x="637" y="174" text-anchor="middle" class="t">Staff acceptance</text><text x="637" y="194" text-anchor="middle" class="s">hands-on testing</text>
+        <rect x="749" y="150" width="150" height="56" rx="12" class="b"/><text x="824" y="174" text-anchor="middle" class="t">Live</text><text x="824" y="194" text-anchor="middle" class="s">people approve</text>
+        <line x1="153" y1="178" x2="186" y2="178" class="ln" marker-end="url(#m4)"/>
+        <line x1="340" y1="178" x2="373" y2="178" class="ln" marker-end="url(#m4)"/>
+        <line x1="527" y1="178" x2="560" y2="178" class="ln" marker-end="url(#m4)"/>
+        <line x1="714" y1="178" x2="747" y2="178" class="ln" marker-end="url(#m4)"/>
+        <path id="loop" d="M637,208 C637,248 263,248 263,212" class="ln dash" marker-end="url(#m4)"/>
+        <g><circle r="4" class="pulse"><animateMotion dur="3s" repeatCount="indefinite"><mpath href="#loop"/></animateMotion></circle></g>
+        <text x="450" y="256" text-anchor="middle" class="s">fixes go back to the agent</text>
+      </svg>
+      </div>
+      <figcaption>The agent writes most of the code; the spec, the checks and the go-live decision stay with me. Dashed = AI step.</figcaption>
+    </figure>
     <ul class="tags"><li>Claude Code</li><li>Claude API</li><li>Agent instructions &amp; skills</li><li>Automated tests</li><li>Prompt-injection defence</li></ul>
     <details>
       <summary>Read the case study</summary>
@@ -289,61 +871,575 @@ footer p{color:var(--muted);font-size:14px}
 </div></section>
 
 <section id="approach"><div class="wrap">
-  <h2>How I work</h2>
+  <p class="kicker">Approach</p>
+  <h2>How I work.</h2>
   <p class="sub">The same approach carries over to ERP/CRM rollouts, BI and internal tooling anywhere.</p>
-  <div class="skills">
-    <div class="skill"><h3>1 · Discover</h3><p>Sit with the people who do the work, map the current process and collect real incidents, not hypotheticals.</p></div>
-    <div class="skill"><h3>2 · Specify</h3><p>Requirements, acceptance criteria and pass/fail criteria agreed before anything is built.</p></div>
-    <div class="skill"><h3>3 · Build</h3><p>Lean delivery with AI coding agents, official integrations and the least data each tool needs.</p></div>
-    <div class="skill"><h3>4 · Adopt</h3><p>Staff testing before go-live, then training and written guides.</p></div>
+  <div class="steps rv">
+    <div class="step spot"><span class="n">01</span><h3>Discover</h3><p>Sit with the people who do the work, map the current process and collect real incidents, not hypotheticals.</p><span class="bar2"></span></div>
+    <div class="step spot"><span class="n">02</span><h3>Specify</h3><p>Requirements, acceptance criteria and pass/fail criteria agreed before anything is built.</p><span class="bar2"></span></div>
+    <div class="step spot"><span class="n">03</span><h3>Build</h3><p>Lean delivery with AI coding agents, official integrations and the least data each tool needs.</p><span class="bar2"></span></div>
+    <div class="step spot"><span class="n">04</span><h3>Adopt</h3><p>Staff testing before go-live, then training and written guides.</p><span class="bar2"></span></div>
   </div>
 </div></section>
 
 <section id="experience"><div class="wrap">
-  <h2>Experience</h2>
-  <p class="sub">From finance to e-commerce to business systems.</p>
+  <p class="kicker">Experience</p>
+  <h2>Finance → e-commerce → systems.</h2>
   <div class="timeline">
-    <div class="role"><div class="when">2024 – present</div><div><h3>Senior Data &amp; Systems Analyst (Head of BI) · luxury watch retailer, PH &amp; HK</h3><p>Promoted twice in one year. KPIs and dashboards, pricing, ERP/CRM and the case studies above; supervises one team member.</p></div></div>
-    <div class="role"><div class="when">2023</div><div><h3>Digital Marketing Manager · real estate developer, Dubai</h3><p>Website, paid search, content, social and analytics.</p></div></div>
-    <div class="role"><div class="when">2019 – 2022</div><div><h3>Onsite Platform Management Lead · Shopee Philippines</h3><p>Promoted through four roles in three years. Homepage priority plans and in-app execution for mega sales (9.9 to 12.12); A/B tests with the Singapore regional team; contributed to the e-wallet bills-payment launch; trained campaign owners.</p></div></div>
-    <div class="role"><div class="when">2016 – 2019</div><div><h3>Accounting Associate · CEVA Logistics (formerly Bolloré Logistics)</h3><p>Payables, receivables, reconciliations, and month-end and year-end close.</p></div></div>
+    <div class="role spot rv"><div class="when">2024 – now</div><div><h3>Senior Data &amp; Systems Analyst (Head of BI) · luxury watch retailer, PH &amp; HK</h3><p>Promoted twice in one year. KPIs and dashboards, pricing, ERP/CRM and the case studies above; supervises one team member.</p></div></div>
+    <div class="role spot rv"><div class="when">2023</div><div><h3>Digital Marketing Manager · real estate developer, Dubai</h3><p>Website, paid search, content, social and analytics.</p></div></div>
+    <div class="role spot rv"><div class="when">2019 – 2022</div><div><h3>Onsite Platform Management Lead · Shopee Philippines</h3><p>Promoted through four roles in three years. Homepage priority plans and in-app execution for mega sales (9.9 to 12.12); A/B tests with the Singapore regional team; contributed to the e-wallet bills-payment launch; trained campaign owners.</p></div></div>
+    <div class="role spot rv"><div class="when">2016 – 2019</div><div><h3>Accounting Associate · CEVA Logistics (formerly Bolloré Logistics)</h3><p>Payables, receivables, reconciliations, and month-end and year-end close.</p></div></div>
   </div>
   <p class="note mt">Also: part-time digital strategy and SEO consulting (2024–2026). BS Information Systems, De La Salle-College of Saint Benilde (2026). Google Ads Search &amp; Analytics, HubSpot SEO.</p>
 </div></section>
 
+<section id="marketing"><div class="wrap">
+  <p class="kicker">Marketing &amp; content</p>
+  <h2>I started on the marketing side.</h2>
+  <p class="sub">Before systems, I ran campaigns, wrote and built the pages, and measured what worked. It's why the systems I build are designed around the customer, not just the back office.</p>
+  <div class="mk-grid">
+    <div class="mk rv" data-roles="marketing">
+      <span class="n">01</span>
+      <h3>Campaigns at scale</h3>
+      <p>At Shopee, ran in-app execution for the biggest sale events (9.9 to 12.12): banners, landing pages, livestreams, push notifications and vouchers, plus homepage priority plans and A/B tests with the Singapore regional team.</p>
+    </div>
+    <div class="mk rv" data-roles="marketing">
+      <span class="n">02</span>
+      <h3>Performance &amp; search</h3>
+      <p>Paid search and analytics as Digital Marketing Manager in Dubai; SEO and digital strategy consulting (2024–2026); email campaigns in Mailchimp; Google Ads Search &amp; Analytics and HubSpot SEO certified.</p>
+    </div>
+    <div class="mk rv" data-roles="marketing">
+      <span class="n">03</span>
+      <h3>Content &amp; e-commerce</h3>
+      <p>As E-commerce Lead, ran the online channel: product listings and copy, the monthly catalogue, SEO, email and paid campaigns, with online and in-store inventory linked.</p>
+    </div>
+    <div class="mk rv" data-roles="marketing">
+      <span class="n">04</span>
+      <h3>Video, made with AI</h3>
+      <p>Produced client explainer and team overview videos: script, AI voice-over, green-screen presenter clips, licensed stock with sources recorded, and editing driven by a Python script. <a href="#case-03">Watch the Grail Exchange explainer ↗</a></p>
+    </div>
+  </div>
+  <div class="mk-tools"><span>Google Ads</span><span>Meta Ads</span><span>TikTok Ads</span><span>GA4</span><span>SEMrush</span><span>Google Trends</span><span>PageSpeed Insights</span><span>Mailchimp</span><span>Botcake</span><span>WhatsApp Business</span><span>Shopify</span><span>WordPress</span><span>Payload CMS</span><span>Canva</span><span>Photoshop</span><span>Lightroom</span><span>CapCut</span><span>ElevenLabs</span><span>ffmpeg</span></div>
+  <h3 class="g-title">Selected marketing &amp; design work</h3>
+  <p class="note g-note">From my earlier portfolio. Shopee work was done in-house (2019–2022); the rest were freelance clients. Click any image to enlarge.</p>
+  <div class="gallery">
+    <article class="g-card g-wide">
+      <div class="g-media g-collage"><button type="button" class="g-img" data-full="img/mkt/shopee-freeship.jpg"><img src="img/mkt/shopee-freeship.jpg" loading="lazy" alt="Shopee in-app banner"></button><button type="button" class="g-img" data-full="img/mkt/shopeepay-load.jpg"><img src="img/mkt/shopeepay-load.jpg" loading="lazy" alt="Shopee in-app banner"></button><button type="button" class="g-img" data-full="img/mkt/shopeepay-bills.jpg"><img src="img/mkt/shopeepay-bills.jpg" loading="lazy" alt="Shopee in-app banner"></button><button type="button" class="g-img" data-full="img/mkt/shopee-newuser.jpg"><img src="img/mkt/shopee-newuser.jpg" loading="lazy" alt="Shopee in-app banner"></button><button type="button" class="g-img" data-full="img/mkt/shopee-beauty.jpg"><img src="img/mkt/shopee-beauty.jpg" loading="lazy" alt="Shopee in-app banner"></button><button type="button" class="g-img" data-full="img/mkt/shopee-beauty50.jpg"><img src="img/mkt/shopee-beauty50.jpg" loading="lazy" alt="Shopee in-app banner"></button></div>
+      <div class="g-meta"><b>Shopee &amp; ShopeePay in-app banners</b><span>Shopee Philippines · campaign banners for mega sales and e-wallet launches · scroll sideways</span></div>
+    </article>
+    <article class="g-card g-tall">
+      <div class="g-media g-scroll"><button type="button" class="g-img" data-full="img/mkt/selly-lp.jpg"><img src="img/mkt/selly-lp.jpg" loading="lazy" alt="Selly Automotive landing page design, full length"></button></div>
+      <div class="g-meta"><b>Selly Automotive landing page</b><span>Freelance · website design for a dealership CRM product · hover to scroll</span></div>
+    </article>
+    <article class="g-card">
+      <div class="g-media g-row3"><button type="button" class="g-img" data-full="img/mkt/foursq-1.jpg"><img src="img/mkt/foursq-1.jpg" loading="lazy" alt="4 Squared Real Estate logo variation"></button><button type="button" class="g-img" data-full="img/mkt/foursq-2.jpg"><img src="img/mkt/foursq-2.jpg" loading="lazy" alt="4 Squared Real Estate logo variation"></button><button type="button" class="g-img" data-full="img/mkt/foursq-3.jpg"><img src="img/mkt/foursq-3.jpg" loading="lazy" alt="4 Squared Real Estate logo variation"></button></div>
+      <div class="g-meta"><b>4 Squared Real Estate brand identity</b><span>Freelance · logo and brand guidelines</span></div>
+    </article>
+    <article class="g-card">
+      <div class="g-media g-row3"><button type="button" class="g-img" data-full="img/mkt/sat-1.jpg"><img src="img/mkt/sat-1.jpg" loading="lazy" alt="SAT Global social media post"></button><button type="button" class="g-img" data-full="img/mkt/sat-2.jpg"><img src="img/mkt/sat-2.jpg" loading="lazy" alt="SAT Global social media post"></button><button type="button" class="g-img" data-full="img/mkt/sat-3.jpg"><img src="img/mkt/sat-3.jpg" loading="lazy" alt="SAT Global social media post"></button></div>
+      <div class="g-meta"><b>SAT Global social media</b><span>Freelance · product posts for kitchenware and home goods</span></div>
+    </article>
+    <article class="g-card">
+      <div class="g-media g-row3"><button type="button" class="g-img" data-full="img/mkt/aseel-1.jpg"><img src="img/mkt/aseel-1.jpg" loading="lazy" alt="Aseel interior mood board page"></button><button type="button" class="g-img" data-full="img/mkt/aseel-2.jpg"><img src="img/mkt/aseel-2.jpg" loading="lazy" alt="Aseel interior mood board page"></button><button type="button" class="g-img" data-full="img/mkt/aseel-3.jpg"><img src="img/mkt/aseel-3.jpg" loading="lazy" alt="Aseel interior mood board page"></button></div>
+      <div class="g-meta"><b>Aseel interior mood board</b><span>Freelance · interior design compilation</span></div>
+    </article>
+    <article class="g-card g-wide">
+      <div class="g-media g-videos">
+        <video src="img/mkt/video-3.mp4" poster="img/mkt/video-3.jpg" muted loop playsinline preload="none" aria-label="Shopee bills payment explainer video"></video>
+        <video src="img/mkt/video-1.mp4" poster="img/mkt/video-1.jpg" muted loop playsinline preload="none" aria-label="Real estate short-form video"></video>
+        <video src="img/mkt/video-2.mp4" poster="img/mkt/video-2.jpg" muted loop playsinline preload="none" aria-label="SAT Global product video"></video>
+      </div>
+      <div class="g-meta"><b>Short-form video</b><span>Shopee bills-payment explainer · a real estate reel · SAT Global product reel (freelance) · plays on hover</span></div>
+    </article>
+  </div>
+</div></section>
+
 <section id="skills"><div class="wrap">
-  <h2>Toolbox</h2>
+  <p class="kicker">Toolbox</p>
+  <h2>What I work with.</h2>
   <div class="skills">
-    <div class="skill"><h3>Business analysis</h3><p>Discovery, process mapping, requirements, user stories, acceptance criteria, user acceptance testing, Jira</p></div>
-    <div class="skill"><h3>Data &amp; BI</h3><p>KPI design, dashboards (Looker Studio, Sheets), SQL (basic), PostgreSQL, Excel and Google Sheets (advanced)</p></div>
-    <div class="skill"><h3>Build</h3><p>React, TypeScript, Express, Next.js, Payload CMS, Frappe/ERPNext, Python, Apps Script, git and GitHub, Vercel</p></div>
-    <div class="skill"><h3>AI</h3><p>Claude Code, Claude API, MCP servers, AI coding agents, prompt design with guardrails</p></div>
-    <div class="skill"><h3>Commerce &amp; marketing</h3><p>E-commerce operations, Shopify, campaign planning, SEO, GA4 and Google Ads</p></div>
-    <div class="skill"><h3>Domain</h3><p>Luxury retail and watches, marketplaces, e-wallet payments, finance operations</p></div>
+    <div class="skill spot rv" data-roles="systems product"><h3>Business analysis</h3><p>Discovery, process mapping, requirements, user stories, acceptance criteria, user acceptance testing, Jira</p></div>
+    <div class="skill spot rv" data-roles="bi"><h3>Data &amp; BI</h3><p>KPI design, dashboards (Looker Studio, Google Analytics), Excel and Google Sheets (advanced), SQL (basic), PostgreSQL</p></div>
+    <div class="skill spot rv" data-roles="systems product ai"><h3>Build</h3><p>React, TypeScript, Vite, Express, Next.js, Payload CMS, Drizzle ORM, Frappe/ERPNext, Python, Apps Script, git and GitHub, Vercel, Google Cloud Run</p></div>
+    <div class="skill spot rv" data-roles="ai"><h3>AI</h3><p>Claude Code, Codex, Replit Agent, Claude API, MCP servers, ElevenLabs, prompt design with guardrails</p></div>
+    <div class="skill spot rv" data-roles="marketing"><h3>Ads &amp; search</h3><p>Google Ads, Meta Ads, TikTok Ads, GA4, SEO with SEMrush, Google Trends and PageSpeed Insights, campaign planning</p></div>
+    <div class="skill spot rv" data-roles="marketing systems"><h3>Email, CRM &amp; messaging</h3><p>Email marketing in Mailchimp, Botcake, WhatsApp Business Cloud API, client databases with contact history</p></div>
+    <div class="skill spot rv" data-roles="marketing product"><h3>Commerce &amp; web</h3><p>Shopify, WordPress, Payload CMS, landing pages, product listings and catalogues, e-commerce operations</p></div>
+    <div class="skill spot rv" data-roles="marketing"><h3>Design &amp; video</h3><p>Canva, Adobe Photoshop, Lightroom, CapCut, ElevenLabs voice-over, ffmpeg</p></div>
+    <div class="skill spot rv" data-roles="bi systems"><h3>Workplace &amp; domain</h3><p>Microsoft Office, Google Workspace · luxury retail and watches, marketplaces, e-wallet payments, finance operations</p></div>
+  </div>
+</div></section>
+
+<section id="colophon"><div class="wrap">
+  <div class="colophon rv">
+    <div>
+      <p class="kicker">Colophon</p>
+      <h2>This site is a case study too.</h2>
+      <p class="sub">I built it the same way as case 04: by directing an AI coding agent, with every claim checked against my own records before it went live.</p>
+    </div>
+    <ol>
+      <li>Wrote the content from sanitised case-study notes.</li>
+      <li>An AI agent built the page; diagrams are hand-written SVG.</li>
+      <li>A second, independent AI review checked accuracy and privacy.</li>
+      <li>Mikee Bot answers only from my verified notes: no live AI model, so it can't make things up.</li>
+      <li>I approved every fix and the go-live.</li>
+    </ol>
   </div>
 </div></section>
 </main>
 
 <footer id="contact"><div class="wrap">
-  <h2>Let's talk</h2>
-  <p class="sub">Open to business systems, BI, technical product and transformation roles for 2027, in Asia, the Middle East, Europe or remote.</p>
+  <p class="kicker">Contact</p>
+  <h2>Have a process that needs a better system? Let's talk.</h2>
+  <p class="sub">Questions about my work, a project, or a role? Email, WhatsApp or LinkedIn all reach me.</p>
   <div class="cta">
-    <a class="btn primary" href="mailto:michaelangelo.gooden@gmail.com">michaelangelo.gooden@gmail.com</a>
+    <div class="mailwrap">
+      <button class="btn primary" type="button" id="mailbtn" aria-haspopup="true" aria-expanded="false">Email me ▾</button>
+      <div class="mailmenu" id="mailmenu" role="menu">
+        <a role="menuitem" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=michaelangelo.gooden@gmail.com&amp;su=Hello%20Mikee%20%E2%80%94%20from%20your%20portfolio" target="_blank" rel="noopener">Gmail</a>
+        <a role="menuitem" href="https://outlook.office.com/mail/deeplink/compose?to=michaelangelo.gooden@gmail.com&amp;subject=Hello%20Mikee%20%E2%80%94%20from%20your%20portfolio" target="_blank" rel="noopener">Outlook</a>
+        <a role="menuitem" href="mailto:michaelangelo.gooden@gmail.com?subject=Hello%20Mikee%20%E2%80%94%20from%20your%20portfolio">Default mail app</a>
+        <button role="menuitem" type="button" id="mailcopy">Copy address</button>
+      </div>
+    </div>
+    <a class="btn wa" href="https://wa.me/639674936205?text=Hi%20Mikee%2C%20I%20saw%20your%20portfolio." target="_blank" rel="noopener" data-wa><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.8 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg> WhatsApp</a>
+    <a class="btn li" href="https://www.linkedin.com/in/mike-gooden/" target="_blank" rel="noopener" data-li><svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg> LinkedIn</a>
+    <a class="btn cvbtn" href="cv/Michael-Angelo-Gooden-CV.pdf" download data-cv>Download CV (PDF)</a>
   </div>
-  <p class="fine">© 2026 Michael Angelo Gooden. Case studies are sanitised; no confidential data, code or client details are shown.</p>
+  <p class="fine">© 2026 Michael Angelo Gooden · Case studies are sanitised; no confidential data, code or client details are shown. Press <kbd>⌘</kbd> <kbd>K</kbd> to explore, or ask Mikee Bot.</p>
 </div></footer>
+
+<button class="botfab" id="botfab" type="button" aria-controls="bot" aria-expanded="false"><span class="botav"><img src="mikee.jpg" alt=""></span><span>Ask Mikee Bot</span></button>
+<div class="botteaser" id="botteaser" role="status"><b>Hi, I'm Mikee Bot.</b> Want a 30-second intro tailored to the role you're hiring for?</div>
+<section class="bot" id="bot" role="dialog" aria-label="Mikee Bot" aria-hidden="true">
+  <div class="bot-h">
+    <span class="botav"><img src="mikee.jpg" alt=""></span>
+    <div class="who"><b>Mikee Bot</b><small>Guided assistant · answers only from Mikee's verified portfolio</small></div>
+    <button type="button" id="botvoice" aria-pressed="false" aria-label="Read replies aloud" title="Read replies aloud"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
+    <button type="button" id="botclose" aria-label="Close chat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="bot-log" id="botlog" aria-live="polite"></div>
+  <div class="bot-chips" id="botchips"></div>
+  <form class="bot-in" id="botform" autocomplete="off">
+    <button type="button" class="mic" id="botmic" aria-label="Speak your question" title="Speak" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+    <input id="botq" type="text" placeholder="Ask about Mikee…" aria-label="Ask Mikee Bot a question" enterkeyhint="send">
+    <button type="submit" aria-label="Send"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+  </form>
+  <div class="bot-note">Not a live AI model. For anything it can't answer, it points you to Mikee.</div>
+</section>
+<div class="pal" id="pal" role="dialog" aria-modal="true" aria-label="Command menu">
+  <div class="box">
+    <input id="palq" type="text" placeholder="Jump to a case, a section, or tailor the page…" aria-label="Search commands" autocomplete="off">
+    <ul id="pall" role="listbox" aria-label="Commands"></ul>
+  </div>
+</div>
+<div class="curtain" id="curtain" aria-hidden="true"><span id="curtain-t"></span></div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Enlarged image"><img id="lbimg" alt=""></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
 (function(){
-  var root=document.documentElement, key='mg-theme', btn=document.getElementById('theme');
-  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;}
-  function sync(){var d=isDark();btn.setAttribute('aria-pressed',String(d));btn.setAttribute('aria-label',d?'Light theme':'Dark theme');}
-  try{var saved=localStorage.getItem(key); if(saved) root.setAttribute('data-theme',saved);}catch(e){}
+  var root=document.documentElement, reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var EMAIL='michaelangelo.gooden@gmail.com';
+  function $(s,c){return (c||document).querySelector(s)} function $$(s,c){return [].slice.call((c||document).querySelectorAll(s))}
+
+  /* theme */
+  var tbtn=$('#theme'), key='mg-theme';
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches}
+  function sync(){var d=isDark();tbtn.setAttribute('aria-pressed',String(d));tbtn.setAttribute('aria-label',d?'Light theme':'Dark theme')}
+  try{var sv=localStorage.getItem(key);if(sv)root.setAttribute('data-theme',sv)}catch(e){}
   sync();
-  btn.addEventListener('click',function(){
-    var next=isDark()?'light':'dark'; root.setAttribute('data-theme',next); sync();
-    try{localStorage.setItem(key,next);}catch(e){}
+  function toggleTheme(){var n=isDark()?'light':'dark';root.setAttribute('data-theme',n);sync();try{localStorage.setItem(key,n)}catch(e){}}
+  var themeClick=function(){toggleTheme()};tbtn.addEventListener('click',function(){themeClick()});
+
+  /* toast + copy */
+  var toast=$('#toast'),tt;
+  function say(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show')},1800)}
+  function copy(){(navigator.clipboard?navigator.clipboard.writeText(EMAIL):Promise.reject()).then(function(){say('Email copied')},function(){say(EMAIL)})}
+  ['#copy1','#copy2'].forEach(function(s){var b=$(s);if(b)b.addEventListener('click',copy)});
+
+  /* role tailoring */
+  var LEDES={
+    all:$('#lede').textContent,
+    bi:'For BI and data teams: KPI design, dashboards for gross profit, close rate and inventory ageing, and a pricing pipeline where every number traces back to a real source.',
+    systems:'For business systems teams: discovery, requirements, data models and an ERP rollout across two countries, including a build-vs-buy decision staff signed off on.',
+    product:'For product and delivery teams: written specs with acceptance criteria, staff testing before go-live, and web platforms built end to end.',
+    marketing:'For marketing and content teams: campaigns for Shopee\'s biggest sale events, paid search, SEO and email, and the websites, stores and videos I built and produced myself.',
+    ai:'For AI and automation teams: six systems built in 2026 by directing AI coding agents, and AI inside products with guardrails: fixed schemas, source links and human approval.'
+  };
+  var chips=$$('.chip'), cases=$('#cases');
+  function tailor(role,push){
+    chips.forEach(function(c){c.setAttribute('aria-pressed',String(c.dataset.role===role))});
+    var l=$('#lede');l.style.opacity=0;setTimeout(function(){l.textContent=LEDES[role]||LEDES.all;l.style.opacity=1},reduce?0:200);
+    var arts=$$('.case',cases);
+    arts.sort(function(a,b){
+      var ma=role!=='all'&&a.dataset.roles.split(' ').indexOf(role)>-1, mb=role!=='all'&&b.dataset.roles.split(' ').indexOf(role)>-1;
+      return (mb-ma)||(a.id<b.id?-1:1)});
+    arts.forEach(function(a){
+      var m=role!=='all'&&a.dataset.roles.split(' ').indexOf(role)>-1;
+      a.classList.toggle('match',m);a.classList.toggle('dim',role!=='all'&&!m);cases.appendChild(a)});
+    $$('.skill').forEach(function(s){s.classList.toggle('match',role!=='all'&&s.dataset.roles.split(' ').indexOf(role)>-1)});
+    $$('.mk').forEach(function(s){s.style.opacity=(role==='all'||role==='marketing')?'':'.45'});
+    $$('.hat').forEach(function(h){h.classList.toggle('match',role!=='all'&&h.dataset.roles.split(' ').indexOf(role)>-1)});
+    if(push){try{var u=new URL(location.href);if(role==='all')u.searchParams.delete('for');else u.searchParams.set('for',role);history.replaceState(null,'',u)}catch(e){}}
+  }
+  chips.forEach(function(c){c.addEventListener('click',function(){tailorFx(c.dataset.role,true);if(c.dataset.role!=='all')say('Tailored for '+c.textContent+' · link updated')})});
+  var tailorFx=tailor;
+  try{var f=new URL(location.href).searchParams.get('for');if(f&&LEDES[f])tailor(f,false)}catch(e){}
+
+  /* before/after */
+  $$('.seg').forEach(function(seg){
+    var fig=seg.closest('figure');
+    $$('button',seg).forEach(function(b){b.addEventListener('click',function(){
+      $$('button',seg).forEach(function(x){x.setAttribute('aria-pressed',String(x===b))});
+      $$('.state',fig).forEach(function(s){s.classList.toggle('off',s.dataset.s!==b.dataset.state)});
+    })});
   });
-  window.addEventListener('beforeprint',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+
+  /* ticker */
+  var TICKS=['inquiry received → client record updated','item received → condition recorded','stock counted → discrepancies flagged','listing read → comparable linked to source','price set → reason recorded','sale closed → finance export ready'];
+  var ti=0,tick=$('#tick');
+  if(!reduce)setInterval(function(){ti=(ti+1)%TICKS.length;tick.style.opacity=0;setTimeout(function(){tick.textContent=TICKS[ti];tick.style.opacity=1},300)},2600);
+
+  /* reveal + counters */
+  var io='IntersectionObserver' in window?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12}):null;
+  $$('.rv').forEach(function(el){if(io&&!reduce)io.observe(el);else el.classList.add('in')});
+  function count(el){var to=+el.dataset.to,s=null;function f(t){if(!s)s=t;var p=Math.min((t-s)/900,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)}requestAnimationFrame(f)}
+  if(io&&!reduce){var co=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){count(e.target);co.unobserve(e.target)}})});$$('.count').forEach(function(c){c.textContent='0';co.observe(c)})}
+
+  /* spotlight */
+  $$('.spot').forEach(function(el){el.addEventListener('pointermove',function(ev){var r=el.getBoundingClientRect();el.style.setProperty('--mx',(ev.clientX-r.left)+'px');el.style.setProperty('--my',(ev.clientY-r.top)+'px')})});
+
+  /* portrait 3D tilt */
+  var pt=$('#portrait'),p3=$('#p3d');
+  if(pt&&p3&&!reduce&&matchMedia('(pointer:fine)').matches){
+    var zone=$('header');
+    zone.addEventListener('pointermove',function(e){var r=p3.getBoundingClientRect(),x=(e.clientX-(r.left+r.width/2))/innerWidth,y=(e.clientY-(r.top+r.height/2))/innerHeight;p3.style.transform='rotateY('+(x*28).toFixed(2)+'deg) rotateX('+(-y*22).toFixed(2)+'deg)'});
+    zone.addEventListener('pointerleave',function(){p3.style.transform=''});
+  }
+
+  /* duplicate marquee for seamless loop */
+  var tr=$('#track');tr.innerHTML+=tr.innerHTML;
+
+  /* reduced motion: stop SVG animations */
+  if(reduce)$$('svg').forEach(function(s){if(s.pauseAnimations)s.pauseAnimations()});
+
+  /* command palette */
+  var pal=$('#pal'),q=$('#palq'),list=$('#pall'),sel=0,last;
+  function go(id){return function(){var el=document.getElementById(id);if(el)el.scrollIntoView({behavior:reduce?'auto':'smooth'})}}
+  var CMDS=[
+    ['Case 01 · ERP & CRM','case',go('case-01')],['Case 02 · Pricing intelligence','case',go('case-02')],
+    ['Case 03 · Web platforms','case',go('case-03')],['Case 04 · AI-driven delivery','case',go('case-04')],
+    ['Many hats','section',go('hats')],
+    ['How I work','section',go('approach')],['Experience','section',go('experience')],['Toolbox','section',go('skills')],
+    ['How this site was built','section',go('colophon')],['Contact','section',go('contact')],
+    ['Tailor for BI & data','tailor',function(){tailor('bi',true);go('work')()}],
+    ['Tailor for business systems','tailor',function(){tailor('systems',true);go('work')()}],
+    ['Tailor for product & delivery','tailor',function(){tailor('product',true);go('work')()}],
+    ['Tailor for AI & automation','tailor',function(){tailor('ai',true);go('work')()}],
+    ['Tailor for marketing & content','tailor',function(){tailor('marketing',true);go('work')()}],
+    ['Marketing & content','section',go('marketing')],
+    ['Download CV (PDF)','action',function(){var a=document.createElement('a');a.href='cv/Michael-Angelo-Gooden-CV.pdf';a.download='';document.body.appendChild(a);a.click();a.remove()}],
+    ['Message on WhatsApp','action',function(){window.open('https://wa.me/639674936205?text=Hi%20Mikee%2C%20I%20saw%20your%20portfolio.','_blank','noopener')}],
+    ['Copy email address','action',copy],['Toggle light / dark','action',toggleTheme],
+    ['Email Mikee (Gmail)','action',function(){window.open('https://mail.google.com/mail/?view=cm&fs=1&to='+EMAIL,'_blank','noopener')}],
+    ['Email Mikee (mail app)','action',function(){location.href='mailto:'+EMAIL}],
+    ['Open LinkedIn','action',function(){window.open('https://www.linkedin.com/in/mike-gooden/','_blank','noopener')}],
+    ['Talk to Mikee Bot','bot',function(){openBot()}]
+  ];
+  var shown=CMDS;
+  function render(){
+    var v=q.value.toLowerCase().trim();shown=CMDS.filter(function(c){return !v||c[0].toLowerCase().indexOf(v)>-1||c[1].indexOf(v)>-1});
+    sel=Math.min(sel,Math.max(shown.length-1,0));
+    list.innerHTML=shown.map(function(c,i){return '<li role="option" id="o'+i+'" aria-selected="'+(i===sel)+'" data-i="'+i+'">'+c[0].replace(/&/g,'&amp;')+'<span>'+c[1]+'</span></li>'}).join('')||'<li>No matches</li>';
+    q.setAttribute('aria-activedescendant','o'+sel);
+  }
+  function open(){last=document.activeElement;pal.classList.add('open');q.value='';sel=0;render();q.focus()}
+  function close(){pal.classList.remove('open');if(last)last.focus()}
+  function run(i){var c=shown[i];if(!c)return;close();setTimeout(c[2],10)}
+  $('#palbtn').addEventListener('click',open);
+  document.addEventListener('keydown',function(e){
+    if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();pal.classList.contains('open')?close():open();return}
+    if(e.key==='/'&&!pal.classList.contains('open')&&!/input|textarea/i.test(document.activeElement.tagName)){e.preventDefault();open();return}
+    if(!pal.classList.contains('open'))return;
+    if(e.key==='Escape')close();
+    else if(e.key==='ArrowDown'){sel=(sel+1)%Math.max(shown.length,1);render();e.preventDefault()}
+    else if(e.key==='ArrowUp'){sel=(sel-1+shown.length)%Math.max(shown.length,1);render();e.preventDefault()}
+    else if(e.key==='Enter'){run(sel);e.preventDefault()}
+  });
+  q.addEventListener('input',function(){sel=0;render()});
+  list.addEventListener('click',function(e){var li=e.target.closest('li[data-i]');if(li)run(+li.dataset.i)});
+  pal.addEventListener('click',function(e){if(e.target===pal)close()});
+
+
+  function award(){}
+
+  /* ---------- transitions ---------- */
+  var VT=!!document.startViewTransition&&!reduce;
+  themeClick=function(){
+    if(!VT){toggleTheme();return}
+    var r=tbtn.getBoundingClientRect(),x=r.left+r.width/2,y=r.top+r.height/2,R=Math.hypot(Math.max(x,innerWidth-x),Math.max(y,innerHeight-y));
+    var vt=document.startViewTransition(function(){toggleTheme()});
+    vt.ready.then(function(){document.documentElement.animate({clipPath:['circle(0px at '+x+'px '+y+'px)','circle('+R+'px at '+x+'px '+y+'px)']},{duration:650,easing:'cubic-bezier(.2,.8,.2,1)',pseudoElement:'::view-transition-new(root)'})});
+  };
+  tailorFx=function(role,push){if(VT&&push){document.startViewTransition(function(){tailor(role,push)})}else tailor(role,push)};
+  var cur=$('#curtain'),curT=$('#curtain-t'),busy=false;
+  var NAMES={top:'Home',work:'Selected work',approach:'How I work',experience:'Experience',skills:'Toolbox',colophon:'How this was built',contact:"Let's talk",flow:'The idea',marketing:'Marketing & content',hats:'Many hats'};
+  function wipe(id){
+    var el=document.getElementById(id);if(!el)return;
+    if(reduce||busy){el.scrollIntoView();return}
+    busy=true;curT.textContent=NAMES[id]||'';cur.classList.remove('out');void cur.offsetWidth;cur.classList.add('in');
+    setTimeout(function(){
+      root.style.scrollBehavior='auto';el.scrollIntoView();root.style.scrollBehavior='';
+      cur.classList.add('out');
+      setTimeout(function(){cur.classList.remove('in','out');busy=false},600);
+    },650);
+  }
+  $$('a[href^="#"]').forEach(function(a){var id=a.getAttribute('href').slice(1);if(!NAMES[id])return;a.addEventListener('click',function(e){e.preventDefault();wipe(id);try{history.replaceState(null,'','#'+id)}catch(_){}})});
+  $$('.case details').forEach(function(d){var s=$('summary',d);s.addEventListener('click',function(e){if(!VT)return;e.preventDefault();document.startViewTransition(function(){d.open=!d.open})})});
+
+  /* gallery: lightbox + hover video */
+  var lb=$('#lb'),lbi=$('#lbimg');
+  $$('.g-img').forEach(function(b){b.addEventListener('click',function(){lbi.src=b.dataset.full;lbi.alt=$('img',b).alt;lb.classList.toggle('tall',/selly/.test(b.dataset.full));lb.classList.add('open');lb.scrollTop=0})});
+  lb.addEventListener('click',function(){lb.classList.remove('open')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('open')});
+  $$('.g-videos video').forEach(function(v){
+    v.addEventListener('mouseenter',function(){if(!reduce)v.play().catch(function(){})});
+    v.addEventListener('mouseleave',function(){v.pause()});
+    v.addEventListener('click',function(){v.paused?v.play().catch(function(){}):v.pause()});
+  });
+
+  /* email menu */
+  var mb=$('#mailbtn'),mm=$('#mailmenu');
+  if(mb){
+    mb.addEventListener('click',function(e){e.stopPropagation();var o=mm.classList.toggle('open');mb.setAttribute('aria-expanded',String(o))});
+    document.addEventListener('click',function(e){if(!mm.contains(e.target)){mm.classList.remove('open');mb.setAttribute('aria-expanded','false')}});
+    $$('a',mm).forEach(function(a){a.addEventListener('click',function(){award('hello');mm.classList.remove('open')})});
+    $('#mailcopy').addEventListener('click',function(){copy();award('hello');mm.classList.remove('open')});
+  }
+  $$('[data-li]').forEach(function(a){a.addEventListener('click',function(){award('hello')})});
+
+  /* ---------- Mikee Bot (guided, no live AI) ---------- */
+  var CV_URL='cv/Michael-Angelo-Gooden-CV.pdf', WA_URL='https://wa.me/639674936205?text=Hi%20Mikee%2C%20I%20saw%20your%20portfolio.', LI_URL='https://www.linkedin.com/in/mike-gooden/';
+  var GMAIL='https://mail.google.com/mail/?view=cm&fs=1&to='+EMAIL+'&su=Hello%20Mikee%20%E2%80%94%20from%20your%20portfolio';
+  var ROLES={bi:'BI & data',systems:'Business systems',product:'Product & delivery',ai:'AI & automation',marketing:'Marketing & content'};
+  var CONTACT=[['Email','mail'],['WhatsApp','wa'],['LinkedIn','li'],['Download CV','cv']];
+  var KB=[
+    {id:'intro',k:['who is mikee','about mikee','about him','introduce','summary','overview','who are you mikee','30 second','intro','tell me about mikee','tell me about him'],
+     a:"Mikee (Michael Angelo Gooden) leads business intelligence and systems for Vintage Grail, a luxury watch retailer with branches in Manila, Clark and Hong Kong. He runs discovery, writes the requirements and builds the systems himself by directing AI coding agents. Before that: three years at Shopee Philippines, digital marketing in Dubai, and three years in accounting.",
+     acts:[['See his work','go:work'],['Download CV','cv']],next:['experience','ai','erp']},
+    {id:'current',k:['current role','current job','now','present','title','position','vintage grail','head of bi','what does he do'],
+     a:"Since March 2025 he's Senior Data & Systems Analyst (functional role: Head of Business Intelligence) at Vintage Grail, after being promoted twice in one year (Website Project Manager → E-commerce Lead → BI and systems). He leads BI and business systems for the Manila, Clark and Hong Kong teams and supervises one team member.",
+     next:['erp','pricing','team']},
+    {id:'experience',k:['experience','years','career','work history','timeline','previous','jobs','background','worked'],
+     a:"About ten years in total: accounting at CEVA Logistics (2016–2019), Shopee Philippines (2019–2022, promoted through four roles to Onsite Platform Management Lead), Digital Marketing Manager for a real estate developer in Dubai (2023), and Vintage Grail since 2024, now leading BI and systems.",
+     acts:[['Experience section','go:experience'],['Download CV','cv']],next:['shopee','current','education']},
+    {id:'shopee',k:['shopee','e-commerce platform','mega sale','campaign','ecommerce','shopeepay','11.11','12.12'],
+     a:"At Shopee Philippines (Sep 2019 – Nov 2022) he rose through four roles to Onsite Platform Management Lead. He owned in-app execution for the biggest sale events (9.9 to 12.12): homepage priority plans, banners, landing pages, livestreams, notifications and vouchers. He worked with the Singapore regional team on A/B tests, contributed to the e-wallet bills-payment launch, and trained campaign owners.",
+     acts:[['See Shopee banners','go:marketing']],next:['marketing','experience']},
+    {id:'dubai',k:['dubai','uae','middle east experience','real estate','abroad before','overseas'],
+     a:"In 2023 he worked in Dubai as Digital Marketing Manager for a real estate developer, covering the website, paid search, content, social and analytics.",
+     next:['marketing','experience']},
+    {id:'accounting',k:['accounting','accountant','finance','ceva','bollore','bolloré','reconcile','books'],
+     a:"He started in finance: Accounting Associate at CEVA Logistics (formerly Bolloré Logistics), 2016–2019, handling payables, receivables, reconciliations and month-end close. That finance grounding shows in his systems, like the finance export built into the ERP.",
+     next:['erp','experience']},
+    {id:'education',k:['education','degree','school','university','college','benilde','study','certification','certified','certificate'],
+     a:"BS Information Systems from De La Salle-College of Saint Benilde (2026). Certifications: Google Ads Search & Analytics and HubSpot SEO, plus Shopee Leadership Training.",
+     next:['skills','experience']},
+    {id:'erp',k:['erp','crm','inventory','operations system','biggest project','proudest','best project','build vs buy','erpnext','frappe','system he built','platform'],
+     a:"His biggest project: an ERP and CRM for a multi-branch luxury retailer. He ran discovery, wrote the requirements (approved May 2026) and had the Manila system live about ten weeks after the build started. For Hong Kong he ran a build-vs-buy test on Frappe/ERPNext: every required criterion passed, staff adopted it, and the branches are moving onto that one platform.",
+     acts:[['Open case 01','go:case-01']],next:['pricing','ai','requirements']},
+    {id:'pricing',k:['pricing','price','market check','valuation','pricing tool','mcp','comparable'],
+     a:"He built an AI-assisted market pricing tool where AI only reads real listings, formulas do the maths and a person approves. Every price traces back to a source link. It's in regular use by the pricing reviewer, client advisors and management, and staff can use it from the Claude app through an MCP server with company sign-in.",
+     acts:[['Open case 02','go:case-02']],next:['ai','bi']},
+    {id:'hats',k:['hats','many hats','roles','wear','wears','generalist','versatile','multi','what else','other roles','jack of all trades','range','all around','all-around'],
+     a:"Mikee wears a lot of hats: business analyst, BI lead, product owner and builder, web developer, marketer, designer, video producer, product photographer, trainer, and a finance mind from three years in accounting. Each one links to real work on this page.",
+     acts:[['See the hats','go:hats']],next:['erp','marketing','ai']},
+    {id:'video',k:['video','videos','explainer','voice over','voiceover','elevenlabs','editing','youtube','reel'],
+     a:"He produces videos too. For the Grail Exchange explainer (1:28) he made an AI voice-over cloned from the presenter's voice with consent, used licensed stock with sources recorded and his own watch photography, and drove the editing with a Python script.",
+     acts:[['Watch it','go:case-03']],next:['marketing','web']},
+    {id:'web',k:['website','web','catalogue','catalog','grail exchange','grailexchange','wellness','shopify','next.js','sites','portfolio projects'],
+     a:"He built three live sites on his own: the monthly collection catalogue (catalogue.vintagegrail.com), Grail Exchange, a Hong Kong watch-services platform (grailexchange.com), and the Wellness Whispers Shopify store (freelance). A new retail website is built and awaiting launch.",
+     acts:[['See screenshots','go:case-03']],next:['ai','marketing']},
+    {id:'ai',k:['ai','artificial intelligence','claude','agents','coding agents','automation','chatgpt','llm','vibe','codex'],
+     a:"In 2026 he built six business systems by directing AI coding agents (Claude Code, Codex, Replit Agent): five in use, one awaiting launch. He keeps the requirements, data rules, testing and go-live decisions himself, and puts guardrails on AI inside products: fixed schemas, source links, no AI-generated prices, and client messages treated as data, never instructions.",
+     acts:[['Open case 04','go:case-04']],next:['code','pricing']},
+    {id:'code',k:['code himself','write code','developer','programmer','engineer','coding','does he code','technical','python','typescript','javascript','react','next.js','programming'],
+     a:"He's a builder who works with AI coding agents: he owns the design, requirements, data model, business rules and review, and the agents write much of the code, which he tests and accepts. That's how he ships working systems in React, TypeScript, Next.js, PostgreSQL and Python.",
+     next:['ai','skills']},
+    {id:'skills',k:['skills','tools','stack','tech','software','good at','strengths','expertise','familiar','proficient','programs','apps'],
+     a:"Business analysis (discovery, requirements, acceptance criteria, UAT, Jira); data and BI (KPI design, dashboards in Looker Studio and Sheets, PostgreSQL); building with AI (React, TypeScript, Next.js, Payload CMS, Frappe/ERPNext, Python, Claude API, MCP); and marketing (Google, Meta and TikTok Ads, SEO with SEMrush, GA4, Mailchimp email, Shopify, WordPress, Canva, Photoshop, Lightroom, CapCut). Also AI coding agents like Claude Code, Codex and Replit Agent.",
+     acts:[['Toolbox','go:skills']],next:['bi','marketing']},
+    {id:'bi',k:['bi','business intelligence','data','dashboard','kpi','analytics','analyst','reporting','looker','sql','excel'],
+     a:"He defines KPIs with management and built dashboards for gross profit, close rate, inventory ageing and channel performance, replacing manual weekly spreadsheet reports. He also designed the data model behind one inventory and sales system. Tools: Looker Studio, advanced Excel and Google Sheets, PostgreSQL.",
+     acts:[['Tailor page for BI','tailor:bi']],next:['pricing','erp']},
+    {id:'requirements',k:['business analysis','requirements','process','workshop','stakeholder','discovery','acceptance','uat','jira','transformation','delivery','project manage'],
+     a:"His approach: sit with the people doing the work and collect real incidents, write requirements with acceptance and pass/fail criteria, build lean, then test with staff before go-live and train users. He tracks delivery in Jira and works with operations, finance and management across two countries.",
+     acts:[['How he works','go:approach']],next:['erp','team']},
+    {id:'marketing',k:['marketing','content','seo','ads','social media','design','canva','brand','creative','graphics','email marketing','mailchimp','newsletter','edm','semrush','meta ads','tiktok'],
+     a:"He started on the marketing side: Shopee campaign execution, paid search and analytics in Dubai, SEO consulting, email campaigns in Mailchimp, and e-commerce content. He also designed landing pages, brand guidelines and social posts for freelance clients, and produces short videos, including AI voice-over work.",
+     acts:[['See marketing work','go:marketing'],['Tailor for marketing','tailor:marketing']],next:['shopee','web']},
+    {id:'team',k:['team','manage','management','lead','leadership','people','mentor','direct report','supervise'],
+     a:"He supervises one team member and leads cross-team work with sales, operations, finance and management in Manila, Clark and Hong Kong. At Shopee he trained and onboarded campaign owners and wrote guides the team kept using.",
+     next:['requirements','current']},
+    {id:'relocate',k:['relocate','relocation','location','based','where','move','abroad','country','remote','singapore','hong kong','japan','europe','dubai role'],
+     a:"He's based in Manila and has worked across borders: in Dubai, and with teams in Singapore and Hong Kong. For questions about location, it's best to ask Mikee directly.",
+     acts:CONTACT.slice(0,3),
+     next:['availability','why']},
+    {id:'visa',k:['visa','sponsor','sponsorship','work permit','work rights','work authorization'],
+     a:"Work authorization depends on the country and the role, so that's best discussed with Mikee directly.",
+     acts:CONTACT.slice(0,3),next:['why','contact']},
+    {id:'availability',k:['available','availability','start','notice','when can','join','salary','pay','compensation','rate','expected','expectation'],
+     a:"Start date, notice period and salary are best discussed with Mikee directly, so I won't guess.",
+     acts:CONTACT.slice(0,3),next:['why','contact']},
+    {id:'languages',k:['language','english','filipino','tagalog','japanese','speak'],
+     a:"English (fluent) and Filipino (native).",next:['intro','why']},
+    {id:'watches',k:['watch','watches','luxury','rolex','patek','photography','photo'],
+     a:"He knows luxury watches from the inside: brands, references, condition and value, plus clienteling, consignment and trade-ins. He also shot in-house product photography after hands-on training from professional watch photographers in Hong Kong.",
+     next:['web','current']},
+    {id:'weak',k:['weakness','weaknesses','weak','weak points','gap','gaps','improve','improvement','not good','limitation','limitations','downside','areas to develop'],
+     a:"That's a great interview question, and one Mikee prefers to answer in person rather than through a bot. Happy to connect you:",
+     acts:CONTACT.slice(0,3),next:['why','erp']},
+    {id:'why',k:['why hire','why should','what makes','unique','different','value','fit','stand out'],
+     a:"He bridges business and technology: finance roots, marketing at scale, then systems. He turns messy operations into tools people actually use, ships fast with AI, and keeps the guardrails and decisions human. And he doesn't claim numbers he hasn't measured.",
+     acts:[['See his work','go:work'],['Download CV','cv']],next:['erp','ai']},
+    {id:'cv',k:['cv','resume','résumé','download','his cv','his resume','curriculum'],
+     a:"Here's his CV (PDF, 2 pages).",acts:[['Download CV','cv']],next:['contact']},
+    {id:'contact',k:['contact','email','reach','whatsapp','linkedin','call','phone','talk to him','message','hire him','interview him','schedule'],
+     a:"Best ways to reach Mikee:",acts:CONTACT,next:['cv']},
+    {id:'bot',k:['are you ai','are you real','chatgpt','are you a bot','how do you work','who made you','who built you','real person'],
+     a:"I'm a guided assistant Mikee built for this site. I don't use a live AI model: I answer only from his verified portfolio notes, so I won't make anything up. For anything else, I'll point you to him.",
+     next:['intro','contact']},
+    {id:'hello',k:['hi','hello','hey','kumusta','kamusta','good morning','good afternoon','good evening','yo'],
+     a:"Hi! Ask me anything about Mikee's work, or pick a topic below.",next:['intro','erp','ai']},
+    {id:'thanks',k:['thanks','thank you','salamat','great','awesome','cool','nice'],
+     a:"Happy to help! If you'd like to talk to Mikee himself:",acts:CONTACT.slice(0,3),next:['cv']}
+  ];
+  var LABEL={intro:'Quick intro',current:'Current role',experience:'Experience',shopee:'Shopee',dubai:'Dubai',accounting:'Finance background',education:'Education',erp:'Biggest project',pricing:'Pricing tool',web:'Websites',ai:'How he uses AI',code:'How he builds',skills:'Skills & tools',bi:'BI & data',requirements:'How he works',marketing:'Marketing',team:'Leadership',relocate:'Location',visa:'Visa',availability:'Availability & salary',languages:'Languages',watches:'Watch expertise',video:'Video work',why:'Why hire Mikee',hats:'His many hats',cv:'Get CV',contact:'Contact'};
+  var TOPICS=['intro','hats','erp','ai','bi','marketing','why','cv','contact'];
+
+  var bot=$('#bot'),fab=$('#botfab'),log=$('#botlog'),chipsEl=$('#botchips'),form=$('#botform'),q=$('#botq'),mic=$('#botmic'),vbtn=$('#botvoice'),teaser=$('#botteaser');
+  var started=false,speakOn=false,state='start',who='';
+  function norm(s){return (' '+s.toLowerCase().replace(/[^a-z0-9À-ɏ.+ ]/g,' ').replace(/\s+/g,' ')+' ')}
+  function plain(h){var d=document.createElement('div');d.innerHTML=h;return d.textContent}
+  function scrollLog(){log.scrollTop=log.scrollHeight}
+  function act(code){
+    if(code==='cv'){var a=document.createElement('a');a.href=CV_URL;a.download='';document.body.appendChild(a);a.click();a.remove();say('Downloading CV');return}
+    if(code==='mail'){window.open(GMAIL,'_blank','noopener');return}
+    if(code==='wa'){window.open(WA_URL,'_blank','noopener');return}
+    if(code==='li'){window.open(LI_URL,'_blank','noopener');return}
+    if(code.indexOf('go:')===0){var id=code.slice(3);if(matchMedia('(max-width:640px)').matches)closeBot();var el=document.getElementById(id);if(el){var d=el.querySelector('details');el.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'})}return}
+    if(code.indexOf('tailor:')===0){var r=code.slice(7);(typeof tailorFx==='function'?tailorFx:tailor)(r,true);botSay("Done: I've reordered the page for "+ROLES[r]+" roles.");return}
+  }
+  function addMsg(html,who2,acts){
+    var m=document.createElement('div');m.className='msg '+who2;m.innerHTML=html;
+    if(acts&&acts.length){var w=document.createElement('div');w.className='acts';acts.forEach(function(x){var b=document.createElement('button');b.type='button';b.textContent=x[0];b.addEventListener('click',function(){act(x[1])});w.appendChild(b)});m.appendChild(w)}
+    log.appendChild(m);scrollLog();return m;
+  }
+  function speak(text){
+    if(!speakOn||!window.speechSynthesis)return;
+    try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(text);u.lang='en-US';u.rate=1.02;
+      var vs=speechSynthesis.getVoices().filter(function(v){return /^en/i.test(v.lang)});var pick=vs.filter(function(v){return /Daniel|Alex|Samantha|Google US English|Aaron|Evan/i.test(v.name)})[0]||vs[0];if(pick)u.voice=pick;
+      speechSynthesis.speak(u)}catch(e){}
+  }
+  function botSay(html,acts,chips,delay){
+    var ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';log.appendChild(ty);scrollLog();
+    setTimeout(function(){ty.remove();addMsg(html,'b',acts);speak(plain(html));if(chips)setChips(chips)},reduce?0:(delay||Math.min(450+html.length*4,1100)));
+  }
+  function setChips(list){
+    chipsEl.innerHTML='';
+    list.forEach(function(c){var b=document.createElement('button');b.type='button';b.textContent=c[0];b.addEventListener('click',function(){c[1]()});chipsEl.appendChild(b)});
+  }
+  function topicChips(ids){
+    var seen={},list=[];(ids||TOPICS).concat(TOPICS).forEach(function(id){if(!seen[id]&&LABEL[id]&&list.length<6){seen[id]=1;list.push([LABEL[id],function(){ask(LABEL[id],id)}])}});
+    setChips(list);
+  }
+  function answer(entry){botSay(entry.a,entry.acts,null);setTimeout(function(){topicChips(entry.next)},reduce?0:300)}
+  function match(text){
+    var n=norm(text);
+    n=n+n.replace(/([a-z]{3,})s /g,'$1 ').trim()+' ';
+    var GENERIC={'experience':1,'years':1,'worked':1,'background':1,'jobs':1,'now':1,'present':1,'tools':1,'data':1,'team':1,'lead':1};
+    var best=null,score=0;
+    KB.forEach(function(e){var s=0;e.k.forEach(function(k){var kk=norm(k);if(n.indexOf(kk)>-1){var w=kk.trim().split(' ').length+(kk.length>6?1:0);s+=GENERIC[kk.trim()]?w*0.4:w}});if(s>score){score=s;best=e}});
+    return score>0?best:null;
+  }
+  function ask(text,id){
+    addMsg(text.replace(/</g,'&lt;'),'u');chipsEl.innerHTML='';
+    if(state==='who'){who=text;interviewRole();return}
+    var e=id?KB.filter(function(x){return x.id===id})[0]:match(text);
+    if(e){answer(e)}else{
+      botSay("I only answer from Mikee's verified portfolio, and I don't have that one, so I won't guess. You can ask him directly, or pick a topic:",CONTACT.slice(0,3));
+      setTimeout(function(){topicChips()},reduce?0:300);
+    }
+  }
+  function interviewRole(){
+    var hiring=/recruit|hiring|manager|hr|talent/i.test(who);
+    state='role';
+    if(hiring){
+      botSay("Great, thanks! What kind of role are you hiring for? I'll tailor the whole page to it.",null,
+        Object.keys(ROLES).map(function(r){return [ROLES[r],function(){pickRole(r)}]}).concat([['Something else',function(){pickRole('all')}]]));
+    }else{
+      state='free';
+      botSay("Welcome! What would you like to know about Mikee?",null,null);setTimeout(function(){topicChips()},reduce?0:600);
+    }
+  }
+  var ROLE_PITCH={
+    bi:"For BI & data: he defines KPIs with management, built dashboards for gross profit, close rate and inventory ageing, and a pricing pipeline where every number traces back to a source.",
+    systems:"For business systems: discovery, requirements and data models, plus an ERP rollout across two countries, including a build-vs-buy decision staff signed off on.",
+    product:"For product & delivery: written specs with acceptance criteria, staff testing before go-live, and four web platforms built end to end.",
+    ai:"For AI & automation: six systems built in 2026 by directing AI coding agents, and AI inside products with guardrails: fixed schemas, source links and human approval.",
+    marketing:"For marketing & content: Shopee mega-sale campaigns, paid search, SEO and email, plus websites, stores, design work and videos he made himself."
+  };
+  function pickRole(r){
+    addMsg(r==='all'?'Something else':ROLES[r],'u');chipsEl.innerHTML='';state='free';
+    if(r!=='all'){(typeof tailorFx==='function'?tailorFx:tailor)(r,true);
+      botSay(ROLE_PITCH[r]+" I've reordered the page so the most relevant work is first.",[['Show me','go:work'],['Download CV','cv']]);
+    }else{botSay("No problem. Here's the short version: "+KB[0].a,[['See his work','go:work']])}
+    setTimeout(function(){botSay("What would you like to know more about?",null,null,500);setTimeout(function(){topicChips(r==='bi'?['bi','pricing']:r==='ai'?['ai','code']:r==='marketing'?['marketing','shopee']:r==='product'?['web','requirements']:['erp','requirements'])},reduce?0:900)},reduce?0:1300);
+  }
+  function startInterview(){
+    started=true;state='who';
+    botSay("Hi, I'm Mikee Bot 👋 I'll give you a quick, tailored tour of Mikee's work. First, who am I talking to?",null,
+      [['Recruiter',function(){ask('Recruiter')}],['Hiring manager',function(){ask('Hiring manager')}],['Fellow builder',function(){ask('Fellow builder')}],['Just exploring',function(){ask('Just exploring')}]],600);
+  }
+  function openBot(){
+    bot.classList.add('open');bot.setAttribute('aria-hidden','false');fab.classList.add('hide');fab.setAttribute('aria-expanded','true');teaser.classList.remove('show');
+    try{sessionStorage.setItem('mg-bot-seen','1')}catch(e){}
+    if(!started)startInterview();
+    if(matchMedia('(max-width:640px)').matches)document.body.style.overflow='hidden';
+    setTimeout(function(){if(matchMedia('(pointer:fine)').matches)q.focus()},350);
+  }
+  function closeBot(){
+    bot.classList.remove('open');bot.setAttribute('aria-hidden','true');fab.classList.remove('hide');fab.setAttribute('aria-expanded','false');document.body.style.overflow='';
+    try{speechSynthesis.cancel()}catch(e){}
+  }
+  fab.addEventListener('click',openBot);
+  teaser.addEventListener('click',openBot);
+  $$('[data-openbot]').forEach(function(b){b.addEventListener('click',openBot)});
+  $('#botclose').addEventListener('click',closeBot);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&bot.classList.contains('open'))closeBot()});
+  form.addEventListener('submit',function(e){e.preventDefault();var v=q.value.trim();if(!v)return;q.value='';
+    if(state==='who'){ask(v)}else if(state==='role'){state='free';ask(v)}else ask(v)});
+  vbtn.addEventListener('click',function(){speakOn=!speakOn;vbtn.setAttribute('aria-pressed',String(speakOn));if(!speakOn)try{speechSynthesis.cancel()}catch(e){}});
+  /* voice input */
+  var SR=window.SpeechRecognition||window.webkitSpeechRecognition,rec=null,listening=false;
+  if(SR){
+    mic.hidden=false;
+    mic.addEventListener('click',function(){
+      if(listening){try{rec.stop()}catch(e){}return}
+      rec=new SR();rec.lang='en-US';rec.interimResults=true;rec.maxAlternatives=1;
+      rec.onstart=function(){listening=true;mic.classList.add('on');q.placeholder='Listening…'};
+      rec.onresult=function(ev){var s='';for(var i=0;i<ev.results.length;i++)s+=ev.results[i][0].transcript;q.value=s;if(ev.results[ev.results.length-1].isFinal){speakOn=true;vbtn.setAttribute('aria-pressed','true');setTimeout(function(){form.requestSubmit?form.requestSubmit():form.dispatchEvent(new Event('submit'))},150)}};
+      rec.onerror=function(){say('Voice input isn’t available here. Try typing.')};
+      rec.onend=function(){listening=false;mic.classList.remove('on');q.placeholder='Ask about Mikee…'};
+      try{rec.start()}catch(e){}
+    });
+  }
+  /* teaser after a few seconds, once per session, desktop only */
+  var seen=false;try{seen=!!sessionStorage.getItem('mg-bot-seen')}catch(e){}
+  if(!seen&&matchMedia('(min-width:641px)').matches){setTimeout(function(){if(!bot.classList.contains('open'))teaser.classList.add('show');setTimeout(function(){teaser.classList.remove('show')},9000)},5000)}
+  window.addEventListener('beforeprint',function(){$$('details').forEach(function(d){d.open=true});$$('.rv').forEach(function(r){r.classList.add('in')})});
 })();
 </script>
 </body>
