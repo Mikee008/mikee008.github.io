@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mikee Gooden — Portfolio</title>
+<meta name="description" content="Business systems, BI and AI-driven delivery. Case studies by Michael Angelo (Mikee) Gooden.">
+<meta name="robots" content="noindex">
+<meta name="author" content="Michael Angelo Gooden">
+<link rel="canonical" href="https://mikee008.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mikee Gooden: business systems, BI and AI-driven delivery">
+<meta property="og:description" content="Case studies in ERP/CRM delivery, pricing intelligence, web platforms and building with AI coding agents.">
+<meta property="og:url" content="https://mikee008.github.io/">
+<meta name="theme-color" content="#1f4e79">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231f4e79'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' font-weight='700' fill='white' text-anchor='middle'%3EMG%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f6f2; --surface:#ffffff; --ink:#1b1f27; --muted:#5b6270; --line:#e3e0d8;
+  --accent:#1f4e79; --accent-soft:#e6eef6; --tag:#f0ede6; --nav:rgba(247,246,242,.92);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121418; --surface:#1a1d23; --ink:#eceef2; --muted:#a3a9b5; --line:#2b2f37;
+    --accent:#8db8e3; --accent-soft:#1d2a38; --tag:#23272f; --nav:rgba(18,20,24,.92);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121418; --surface:#1a1d23; --ink:#eceef2; --muted:#a3a9b5; --line:#2b2f37;
+  --accent:#8db8e3; --accent-soft:#1d2a38; --tag:#23272f; --nav:rgba(18,20,24,.92);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:var(--bg);padding:8px 12px;border-radius:8px;z-index:10}
+.skip:focus{left:16px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px}
+nav{position:sticky;top:0;z-index:5;background:var(--nav);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px;gap:12px}
+nav .brand{font-weight:700;text-decoration:none;color:var(--ink);white-space:nowrap}
+.right{display:flex;align-items:center;gap:14px;min-width:0}
+nav .links{display:flex;gap:18px;font-size:14px;overflow-x:auto}
+nav .links a{color:var(--muted);text-decoration:none;white-space:nowrap}
+nav .links a:hover{color:var(--ink)}
+.theme{background:none;border:1px solid var(--line);color:var(--muted);border-radius:999px;width:34px;height:34px;flex:none;cursor:pointer;font-size:15px;line-height:1}
+.theme:hover{color:var(--ink)}
+header{padding:72px 0 48px}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 12px}
+h1{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(32px,5.6vw,52px);line-height:1.1;margin:0 0 18px;letter-spacing:-.01em;max-width:900px}
+.lede{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:720px;margin:0 0 12px}
+.where{font-size:15px;color:var(--ink);font-weight:500;margin:0 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;padding:10px 18px;border-radius:999px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--bg)}
+.btn.ghost{color:var(--accent)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:40px}
+.fact{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.fact b{display:block;font-size:15px}
+.fact span{color:var(--muted);font-size:14px}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-family:Fraunces,Georgia,serif;font-weight:600;font-size:clamp(26px,4vw,34px);margin:0 0 8px}
+.sub{color:var(--muted);margin:0 0 28px;max-width:720px}
+.cases{display:grid;gap:18px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px;transition:border-color .2s}
+.case:hover{border-color:var(--accent)}
+.case .num{font-size:13px;color:var(--accent);font-weight:700;letter-spacing:.06em}
+.case h3{font-size:21px;margin:6px 0 8px;line-height:1.3}
+.case p{margin:0 0 12px}
+.result{border-left:3px solid var(--accent);padding:2px 0 2px 12px;font-weight:500}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 4px;padding:0;list-style:none}
+.tags li{background:var(--tag);border-radius:999px;padding:3px 10px;font-size:13px;color:var(--muted)}
+details{margin-top:12px;border-top:1px dashed var(--line);padding-top:12px}
+summary{cursor:pointer;font-weight:600;color:var(--accent);list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:" +"}
+details[open] summary::after{content:" −"}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:14px}
+h4{margin:0 0 6px;font-size:15px}
+h4.gap{margin-top:18px}
+.grid2 ul{margin:0;padding-left:18px}
+.grid2 li{margin-bottom:4px;font-size:15px}
+.table-wrap{overflow-x:auto;margin-top:10px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+caption{text-align:left;font-size:13px;color:var(--muted);padding-bottom:6px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--muted);font-weight:600}
+.callout{background:var(--accent-soft);border-radius:12px;padding:14px 16px;font-size:15px;margin-top:12px}
+.timeline{display:grid;gap:14px}
+.role{display:grid;grid-template-columns:170px 1fr;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.role .when{color:var(--muted);font-size:14px}
+.role h3{margin:0 0 4px;font-size:17px}
+.role p{margin:0;color:var(--muted);font-size:15px}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.skill{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.skill h3{font-size:15px;margin:0 0 6px}
+.skill p{margin:0;color:var(--muted);font-size:14px}
+footer{padding:48px 0 64px;border-top:1px solid var(--line)}
+footer p{color:var(--muted);font-size:14px}
+.note{font-size:13px;color:var(--muted)}
+.mt{margin-top:16px}
+.fine{margin-top:28px}
+@media (max-width:700px){
+  header{padding:44px 0 32px}
+  .grid2{grid-template-columns:1fr}
+  .role{grid-template-columns:1fr;gap:4px}
+  nav .links{gap:14px;font-size:13px}
+  nav .links a[href="#approach"],nav .links a[href="#experience"]{display:none}
+  table{font-size:13px}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.case{transition:none}}
+@media print{
+  nav,.cta,.theme,.skip{display:none}
+  body{background:#fff;color:#000}
+  details summary{display:none}
+  .case,.role,.skill,.fact{break-inside:avoid}
+  section{padding:24px 0}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#work">Skip to work</a>
+<nav aria-label="Main"><div class="wrap">
+  <a class="brand" href="#top">Mikee Gooden</a>
+  <div class="right">
+    <div class="links"><a href="#work">Work</a><a href="#approach">Approach</a><a href="#experience">Experience</a><a href="#contact">Contact</a></div>
+    <button class="theme" id="theme" type="button" aria-label="Dark theme" aria-pressed="false"><span aria-hidden="true">◐</span></button>
+  </div>
+</div></nav>
+
+<main>
+<header id="top"><div class="wrap">
+  <p class="eyebrow">Business systems · BI · AI-driven delivery</p>
+  <h1>I specify, build and roll out the systems a business runs on.</h1>
+  <p class="lede">I'm Michael Angelo (Mikee) Gooden. I lead business intelligence and systems for a multi-branch luxury retailer in the Philippines and Hong Kong: I run discovery, write the requirements and build the tools myself by directing AI coding agents. Before that, I spent three years at Shopee Philippines.</p>
+  <p class="where">Based in Manila · open to relocating in 2027</p>
+  <div class="cta">
+    <a class="btn primary" href="#work">See the work</a>
+    <a class="btn ghost" href="#contact">Get in touch</a>
+  </div>
+  <div class="facts">
+    <div class="fact"><b>10 years</b><span>across e-commerce, luxury retail, digital marketing and finance</span></div>
+    <div class="fact"><b>Sole builder</b><span>of these systems, working with operations, management and staff in two countries</span></div>
+    <div class="fact"><b>Requirements to rollout</b><span>discovery, specs, build, staff testing and go-live</span></div>
+    <div class="fact"><b>AI with guardrails</b><span>AI where it is reliable; people make the decisions</span></div>
+  </div>
+</div></header>
+
+<section id="work"><div class="wrap">
+  <h2>Selected work</h2>
+  <p class="sub">Employer, client and system names are withheld for confidentiality, and no screenshots, data or code are shown. Each case describes work I did myself, and I don't quote numbers that weren't measured.</p>
+
+  <div class="cases">
+
+  <article class="case">
+    <div class="num">CASE 01</div>
+    <h3>ERP and CRM for a multi-branch luxury watch retailer</h3>
+    <p>Inventory, consignments, pricing and sales were spread across spreadsheets, scripts, shared drives and messaging apps. Records for the same item didn't always match, and client inquiries arrived through walk-ins, web forms, social media and WhatsApp with no single client record. I ran discovery with operations and management, wrote the requirements, and built the systems that are consolidating it onto one platform.</p>
+    <p class="result">Manila system live about ten weeks after the build started. The Hong Kong platform passed every required criterion and was adopted by staff.</p>
+    <ul class="tags"><li>Requirements &amp; acceptance criteria</li><li>Data model</li><li>Role-based access</li><li>Build vs. buy</li><li>React · Express · PostgreSQL</li><li>Frappe/ERPNext</li></ul>
+    <details>
+      <summary>Read the case study</summary>
+      <div class="grid2">
+        <div>
+          <h4>What I did</h4>
+          <ul>
+            <li>Ran discovery sessions and wrote the product requirements, acceptance criteria and sprint plan. Management approved them in May 2026.</li>
+            <li>Designed the data model, role-based access and workflow rules.</li>
+            <li>Built, launched and maintain the Manila system: inventory, receiving and daily counts, condition assessments, pricing decisions with reasons, sales statements and a finance export.</li>
+            <li>Planned and ran a time-boxed build-vs-buy test for Hong Kong and recommended the outcome.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Real incidents that shaped the design</h4>
+          <ul>
+            <li>A sale fell through when a client misread a complete set as incomplete, so each inclusion is now recorded separately.</li>
+            <li>A contract went out with the wrong model year, so documents are now generated from the item record.</li>
+            <li>A damaged item arrived with no condition record, so condition records are now required before shipping.</li>
+          </ul>
+        </div>
+      </div>
+      <h4 class="gap">The build-vs-buy decision</h4>
+      <p>A custom Hong Kong build already existed. I tested whether an open-source ERP framework could replace it: fixed timebox, fake data only, pass/fail criteria agreed in advance, a full end-to-end flow, branch isolation and field-level permissions, and hands-on testing by Hong Kong staff. Every required criterion passed, staff accepted it, and the custom build was retired. The Manila system is now moving onto the same platform.</p>
+      <div class="callout"><b>Platform judgement:</b> for WhatsApp, I chose the official WhatsApp Business Cloud API over cheaper unofficial relays because of account-ban and terms-of-service risk, and decided a separate CRM product wasn't needed.</div>
+    </details>
+  </article>
+
+  <article class="case">
+    <div class="num">CASE 02</div>
+    <h3>AI-assisted market pricing intelligence</h3>
+    <p>Before pricing an item, a reviewer searched competitor listings by hand and shared a range in a group chat. Dealer prices, auction results and social listings were mixed together, and AI chat answers were sometimes used as a price source. I built a tool where AI collects the facts, formulas do the maths and a person makes the call.</p>
+    <p class="result">In regular use by the pricing reviewer, client advisors and management. Every price traces back to a real listing.</p>
+    <ul class="tags"><li>Data pipeline</li><li>Validation rules</li><li>Google Sheets models</li><li>Python</li><li>Claude API</li><li>MCP server · OAuth</li></ul>
+    <details>
+      <summary>Read the case study</summary>
+      <div class="grid2">
+        <div>
+          <h4>How it works</h4>
+          <ul>
+            <li>Identify the item against a catalogue and generate search terms.</li>
+            <li>An AI agent reads real listings. AI is never a price source, and every comparable keeps its link.</li>
+            <li>Rules for each source normalise and validate the raw text.</li>
+            <li>Formulas place each comparable in a tier and handle currency, landed cost and condition.</li>
+            <li>A person reviews and approves, and every run is saved as history.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Design decisions</h4>
+          <ul>
+            <li><b>Privacy by design:</b> it reads only item columns, never client, consignor or payment details.</li>
+            <li><b>Fast, then full:</b> an instant answer from sources the server can read, then a fuller check within minutes.</li>
+            <li><b>Built for non-developers:</b> chat, a web app and a connector for the Claude app, with company-only Google sign-in.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="table-wrap"><table>
+        <caption>Before and after</caption>
+        <thead><tr><th scope="col">Before</th><th scope="col">After</th></tr></thead>
+        <tbody>
+        <tr><td>Different source types mixed together</td><td>Rules per source; less reliable sources kept out of price ranges</td></tr>
+        <tr><td>AI chat answers used as prices</td><td>AI reads listings only; every price needs a link</td></tr>
+        <tr><td>Ranges depended on who did the check</td><td>Fixed tiers and formulas</td></tr>
+        <tr><td>Results lost in a group chat</td><td>Every run saved as history</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note mt">Time saved hasn't been measured yet, so none is claimed.</p>
+    </details>
+  </article>
+
+  <article class="case">
+    <div class="num">CASE 03</div>
+    <h3>Web platforms: catalogue, services platform and a client store</h3>
+    <p>Customer-facing sites I built on my own and connected to operations.</p>
+    <p class="result">Three sites live; a fourth built and awaiting launch.</p>
+    <ul class="tags"><li>Next.js · Payload CMS</li><li>React · TypeScript · Vite</li><li>PostgreSQL</li><li>Shopify</li><li>Vercel</li></ul>
+    <details>
+      <summary>Read the case study</summary>
+      <div class="table-wrap"><table>
+        <caption>Projects</caption>
+        <thead><tr><th scope="col">Project</th><th scope="col">What it does</th><th scope="col">Status</th></tr></thead>
+        <tbody>
+        <tr><td>Product catalogue</td><td>Curated collections with search and filters; prices shown after registration, which captures leads; WhatsApp and email inquiries; an admin for collections, brands and listings, with spreadsheet sync and PDF generation</td><td>Live</td></tr>
+        <tr><td>Services platform for dealers and collectors</td><td>Client accounts to submit service requests and announce incoming parcels; WhatsApp contact; services and process pages</td><td>Live</td></tr>
+        <tr><td>Retail website rebuild</td><td>Catalogue with inquiry buttons, CMS-managed content, article migration and inventory sync from the operations system</td><td>Built; launch pending</td></tr>
+        <tr><td>Wellness drinks brand (freelance)</td><td>Shopify store with a product catalogue by need and a blend-matching quiz</td><td>Live</td></tr>
+        </tbody>
+      </table></div>
+    </details>
+  </article>
+
+  <article class="case">
+    <div class="num">CASE 04</div>
+    <h3>AI-driven delivery: six systems, one builder</h3>
+    <p>In 2026 I designed and built business systems on my own by directing AI coding agents (Claude Code, Codex, Replit Agent), while keeping the requirements, data rules, testing and decisions in my own hands. I also put AI inside the products where it is reliable, with guardrails where it is not.</p>
+    <p class="result">Six systems built in 2026: five in use and one awaiting launch, each starting from a written spec.</p>
+    <ul class="tags"><li>Claude Code</li><li>Claude API</li><li>Agent instructions &amp; skills</li><li>Automated tests</li><li>Prompt-injection defence</li></ul>
+    <details>
+      <summary>Read the case study</summary>
+      <div class="grid2">
+        <div>
+          <h4>How I keep AI-built software reliable</h4>
+          <ul>
+            <li><b>Requirements first:</b> agents build against a written spec with acceptance criteria.</li>
+            <li><b>Written rules for the agent:</b> for example, never copy client details and never let AI produce a price.</li>
+            <li><b>Reusable skills:</b> repeatable procedures are packaged so results stay consistent.</li>
+            <li><b>Tests and acceptance:</b> automated tests in most projects, and staff acceptance before production.</li>
+            <li><b>Human decisions:</b> AI proposes and builds; people approve prices, go-live and access.</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Guardrails I design for AI message intake</h4>
+          <ul>
+            <li>The model only fills a fixed schema. It can't create records, quote prices or take actions.</li>
+            <li>It never guesses serials, values or dates, and adds a caution when an image is hard to read.</li>
+            <li>It flags risks for staff, like changed bank details or requests to skip inspection.</li>
+            <li>It treats client messages as data, never as instructions.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout"><b>Who wrote the code:</b> I own the design, requirements, data model, rules and review. Agents write most of the code, and I test and accept it.</div>
+    </details>
+  </article>
+
+  </div>
+</div></section>
+
+<section id="approach"><div class="wrap">
+  <h2>How I work</h2>
+  <p class="sub">The same approach carries over to ERP/CRM rollouts, BI and internal tooling anywhere.</p>
+  <div class="skills">
+    <div class="skill"><h3>1 · Discover</h3><p>Sit with the people who do the work, map the current process and collect real incidents, not hypotheticals.</p></div>
+    <div class="skill"><h3>2 · Specify</h3><p>Requirements, acceptance criteria and pass/fail criteria agreed before anything is built.</p></div>
+    <div class="skill"><h3>3 · Build</h3><p>Lean delivery with AI coding agents, official integrations and the least data each tool needs.</p></div>
+    <div class="skill"><h3>4 · Adopt</h3><p>Staff testing before go-live, then training and written guides.</p></div>
+  </div>
+</div></section>
+
+<section id="experience"><div class="wrap">
+  <h2>Experience</h2>
+  <p class="sub">From finance to e-commerce to business systems.</p>
+  <div class="timeline">
+    <div class="role"><div class="when">2024 – present</div><div><h3>Senior Data &amp; Systems Analyst (Head of BI) · luxury watch retailer, PH &amp; HK</h3><p>Promoted twice in one year. KPIs and dashboards, pricing, ERP/CRM and the case studies above; supervises one team member.</p></div></div>
+    <div class="role"><div class="when">2023</div><div><h3>Digital Marketing Manager · real estate developer, Dubai</h3><p>Website, paid search, content, social and analytics.</p></div></div>
+    <div class="role"><div class="when">2019 – 2022</div><div><h3>Onsite Platform Management Lead · Shopee Philippines</h3><p>Promoted through four roles in three years. Homepage priority plans and in-app execution for mega sales (9.9 to 12.12); A/B tests with the Singapore regional team; contributed to the e-wallet bills-payment launch; trained campaign owners.</p></div></div>
+    <div class="role"><div class="when">2016 – 2019</div><div><h3>Accounting Associate · CEVA Logistics (formerly Bolloré Logistics)</h3><p>Payables, receivables, reconciliations, and month-end and year-end close.</p></div></div>
+  </div>
+  <p class="note mt">Also: part-time digital strategy and SEO consulting (2024–2026). BS Information Systems, De La Salle-College of Saint Benilde (2026). Google Ads Search &amp; Analytics, HubSpot SEO.</p>
+</div></section>
+
+<section id="skills"><div class="wrap">
+  <h2>Toolbox</h2>
+  <div class="skills">
+    <div class="skill"><h3>Business analysis</h3><p>Discovery, process mapping, requirements, user stories, acceptance criteria, user acceptance testing, Jira</p></div>
+    <div class="skill"><h3>Data &amp; BI</h3><p>KPI design, dashboards (Looker Studio, Sheets), SQL (basic), PostgreSQL, Excel and Google Sheets (advanced)</p></div>
+    <div class="skill"><h3>Build</h3><p>React, TypeScript, Express, Next.js, Payload CMS, Frappe/ERPNext, Python, Apps Script, git and GitHub, Vercel</p></div>
+    <div class="skill"><h3>AI</h3><p>Claude Code, Claude API, MCP servers, AI coding agents, prompt design with guardrails</p></div>
+    <div class="skill"><h3>Commerce &amp; marketing</h3><p>E-commerce operations, Shopify, campaign planning, SEO, GA4 and Google Ads</p></div>
+    <div class="skill"><h3>Domain</h3><p>Luxury retail and watches, marketplaces, e-wallet payments, finance operations</p></div>
+  </div>
+</div></section>
+</main>
+
+<footer id="contact"><div class="wrap">
+  <h2>Let's talk</h2>
+  <p class="sub">Open to business systems, BI, technical product and transformation roles for 2027, in Asia, the Middle East, Europe or remote.</p>
+  <div class="cta">
+    <a class="btn primary" href="mailto:michaelangelo.gooden@gmail.com">michaelangelo.gooden@gmail.com</a>
+  </div>
+  <p class="fine">© 2026 Michael Angelo Gooden. Case studies are sanitised; no confidential data, code or client details are shown.</p>
+</div></footer>
+<script>
+(function(){
+  var root=document.documentElement, key='mg-theme', btn=document.getElementById('theme');
+  function isDark(){var t=root.getAttribute('data-theme');return t?t==='dark':matchMedia('(prefers-color-scheme: dark)').matches;}
+  function sync(){var d=isDark();btn.setAttribute('aria-pressed',String(d));btn.setAttribute('aria-label',d?'Light theme':'Dark theme');}
+  try{var saved=localStorage.getItem(key); if(saved) root.setAttribute('data-theme',saved);}catch(e){}
+  sync();
+  btn.addEventListener('click',function(){
+    var next=isDark()?'light':'dark'; root.setAttribute('data-theme',next); sync();
+    try{localStorage.setItem(key,next);}catch(e){}
+  });
+  window.addEventListener('beforeprint',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+})();
+</script>
+</body>
+</html>
