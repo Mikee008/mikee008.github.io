@@ -582,6 +582,19 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
 @keyframes grow{from{transform:scaleY(0)}}
 .shot .win,.shot .phone{will-change:transform}
 @media (prefers-reduced-motion:reduce){.draw-wait *{opacity:1!important}.msteps.mwait li{opacity:1;transform:none}}
+
+@media (max-width:640px){
+  .mid{gap:16px;margin:0 0 22px;align-items:flex-end}
+  .mpw{perspective:700px;flex:none}
+  .mp3d{position:relative;width:118px;height:118px;margin-top:26px;transform-style:preserve-3d}
+  .mp3d .p3d-bg{border-radius:18px;transform:translateZ(-30px) scale(1.06)}
+  .mid .mp3d img.p3d-sub{position:absolute;left:-7%;bottom:0;width:114%;height:auto;border:0;border-radius:0;object-fit:initial;transform:translateZ(40px)}
+  .mid b{font-size:19px;letter-spacing:-.01em}
+  .mid span{font-size:14px;margin-top:2px}
+}
+@media (max-width:640px) and (prefers-reduced-motion:no-preference){
+  .mp3d{animation:sway 6s ease-in-out infinite}
+}
 </style>
 </head>
 <body>
@@ -601,7 +614,7 @@ nav{background:color-mix(in srgb,var(--bg) 60%,transparent)!important;-webkit-ba
   <div class="hero">
     <div>
       
-      <div class="mid"><img src="mikee.jpg" width="56" height="56" alt=""><div><b>Mikee Gooden</b><span>BI &amp; business systems · Manila</span></div></div>
+      <div class="mid"><div class="mpw"><div class="mp3d"><div class="p3d-bg" aria-hidden="true"></div><img class="p3d-sub" src="mikee-cut.png" width="700" height="700" alt="Portrait of Mikee Gooden"></div></div><div><b>Mikee Gooden</b><span>BI &amp; business systems · Manila</span></div></div>
       <h1><span class="line"><span>I used to reconcile the books.</span></span><span class="line"><span class="grad">Now I build the systems behind them.</span></span></h1>
       <p class="lede" id="lede" aria-live="polite">I lead business intelligence and systems for Vintage Grail, a multi-branch luxury watch retailer in the Philippines and Hong Kong: I run discovery, write the requirements and build the tools myself by directing AI coding agents. Before that, three years at Shopee Philippines.</p>
       <p class="where">Michael Angelo (Mikee) Gooden · Based in Manila</p>
